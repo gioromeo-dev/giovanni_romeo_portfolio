@@ -1,0 +1,45 @@
+{
+  "firstname": "Giovanni",
+  "lastname": "Romeo",
+  "title": "Hi! I'm Giovanni Romeo",
+  "description":{
+    "title": "Hello I'm Consultant | Solution Architect | Developer",
+    "body": "My name is Giovanni Romeo, and I'm a full-stack software developer. I'm passionate about technology in all its forms, and I see it as a useful tool for facilitating and improving daily life. Driven by this passion, I graduated from the University of Messina in 2022. In recent years, I have combined my studies with my work, applying the knowledge I've gained through both independent and academic study in various fields. My goal is to contribute to the creation of software that enables the implementation of today's technologies."
+  },
+  "navbar":{
+    "buttonHome": "Home",
+    "buttonDescription": "Description",
+    "buttonProjects": "Projects",
+    "buttonAbout": "About me",
+    "buttonContact": "Contact me"
+  },
+  "jobs": [
+    {
+      "title": "Title1",
+      "company": "Company1",
+      "position": "Position1",
+      "description": "Description1",
+      "imgsrc": "",
+      "startdate": "2022-11-28",
+      "enddate": "2025-05-02"
+    },
+    {
+      "title": "Title2",
+      "company": "Company2",
+      "position": "Position2",
+      "description": "Description2",
+      "imgsrc": "",
+      "startdate": "2022-11-28",
+      "enddate": "2025-05-02"
+    },
+    {
+      "title": "Title3",
+      "company": "Company3",
+      "position": "Position3",
+      "description": "Description3",
+      "imgsrc": "",
+      "startdate": "2022-11-28",
+      "enddate": "2025-05-02"
+    }
+  ]
+}

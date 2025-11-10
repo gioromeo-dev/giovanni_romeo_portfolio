@@ -3,11 +3,7 @@ import TextType from "./TextType";
 
 function Main(props: any) {
 
-  const {mainref, language} = props
-
-
-  const titleEn = "Hi! I'm Giovanni Romeo";
-  const titleIt = "Ciao! Sono Giovanni Romeo";
+  const {jsonData, mainref, language} = props
 
   return (
     <>
@@ -15,11 +11,11 @@ function Main(props: any) {
 
     <div ref={mainref}className="section main watch">
       <div className="main-name">
-        {language === "en" && <TextType text={titleEn}/>}
-        {language === "it" && <TextType text={titleIt}/>}
+        {language === "en" && <TextType text={jsonData.title}/>}
+        {language === "it" && <TextType text={jsonData.title}/>}
       </div>
       <div className="main-img watch fade-in">
-        <img src="MemojiHi.svg" alt="img" />
+        <img src="images/MemojiHi.svg" alt="img" />
       </div>
     </div>
 

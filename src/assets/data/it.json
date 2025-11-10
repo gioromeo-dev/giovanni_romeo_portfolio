@@ -1,0 +1,45 @@
+{
+  "firstname": "Giovanni",
+  "lastname": "Romeo",
+  "title": "Ciao! Io sono Giovanni Romeo",
+  "description":{
+    "title": "Ciao io sono un Consultant | Solution Architect | Developer",
+    "body": "Mi chiamo Giovanni Romeo, e sono un Software Developer Full Stack. Sono un appassionato della tecnologia in ogni sua forma e per me rappresenta uno strumento utile per agevolare e migliorare la vita quotidiana. Guidato da questa passione, mi sono laureato presso l’Università degli studi di Messina nel 2022. Negli ultimi anni ho associato lo studio all’attività lavorativa, applicando le conoscenze acquisite nello studio, sia autonomo che universitario, in vari settori lavorativi. Il mio obiettivo è quello di contribuire alla creazione di software che possano implementare le tecnologie odierne."
+  },
+  "navbar":{
+    "buttonHome": "Principale",
+    "buttonDescription": "Descrizione",
+    "buttonProjects": "Progetti",
+    "buttonAbout": "Su di me",
+    "buttonContact": "Contattami"
+  },
+  "jobs": [
+    {
+      "title": "Title1",
+      "company": "Company1",
+      "position": "Position1",
+      "description": "Description1",
+      "imgsrc": "",
+      "startdate": "2022-11-28",
+      "enddate": "2025-05-02"
+    },
+    {
+      "title": "Title2",
+      "company": "Company2",
+      "position": "Position2",
+      "description": "Description2",
+      "imgsrc": "",
+      "startdate": "2022-11-28",
+      "enddate": "2025-05-02"
+    },
+    {
+      "title": "Title3",
+      "company": "Company3",
+      "position": "Position3",
+      "description": "Description3",
+      "imgsrc": "",
+      "startdate": "2022-11-28",
+      "enddate": "2025-05-02"
+    }
+  ]
+}

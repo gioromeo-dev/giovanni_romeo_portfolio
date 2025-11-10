@@ -2,19 +2,33 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Tobe from "./components/Tobe";
 import Main from "./components/Main";
-import PopUpBar from "./components/PopUpBar";
-import MainBar from "./components/MainBar";
+import PopUpBar from "./components/PopUpNavBar";
+import MainBar from "./components/MainNavBar";
 import Description from "./components/Description";
 import { useInView } from "motion/react";
 import Carousel from "./components/Carousel";
 
 import Iridescence from "./components/Iridescence";
+import { GetData, JsonData } from "./assets/scripts/getData";
 
 function App() {
   const [tobe] = useState(false);
   const [language, setLanguage] = useState("en");
   const mainref = useRef<HTMLElement | null>(null);
   const mainInView = useInView(mainref, { margin: "-50px" });
+
+  const [jsonData, setJsonData] = useState <JsonData>();
+
+  
+  if(jsonData == null){
+    var response  = GetData(language);
+    if (response != null) setJsonData(response);
+  }
+
+  useEffect(() =>{
+    var response  = GetData(language);
+    if (response != null) setJsonData(response);
+  }, [language])
 
   useEffect(() => {
     inPage();
@@ -37,32 +51,19 @@ function App() {
 
   return (
     <>
+    
       {tobe && <Tobe />}
       {!tobe && (
-        <div style={{ top: "0", left: "0", position: "absolute", width: "100vw"}}>
-          <div
-            style={{
-              top: "0",
-              left: "0",
-              width: "100vw",
-              height: "100vh",
-              position: "fixed",
-            }}
-          >
-            <Iridescence
-              color={[0.5, 0.5, 0.5]}
-              mouseReact={false}
-              amplitude={0.1}
-              speed={1.0}
-            />
-          </div>
+        <div
+          style={{ top: "0", left: "0", position: "absolute", width: "100vw" }}
+        >
 
-          <MainBar language={language} setLanguage={setLanguage} />
+          <MainBar jsonData={jsonData} language={language} setLanguage={setLanguage} />
           {!mainInView && (
-            <PopUpBar language={language} setLanguage={setLanguage} />
+            <PopUpBar jsonData={jsonData} language={language} setLanguage={setLanguage} />
           )}
-          <Main mainref={mainref} language={language} />
-          <Description language={language} />
+          <Main jsonData={jsonData} mainref={mainref} language={language} />
+          <Description jsonData={jsonData} language={language} />
           {/* <Carousel /> */}
         </div>
       )}
