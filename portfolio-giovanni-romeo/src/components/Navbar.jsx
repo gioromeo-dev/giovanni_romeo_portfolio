@@ -1,102 +1,62 @@
-import { useState, useEffect } from 'react'
-import { useTheme } from '../context/ThemeContext'
-import { useLang } from '../context/LangContext'
-import { useScrollSpy } from '../hooks/useScrollSpy'
-import { Sun, Moon, Menu, X } from 'lucide-react'
-import './Navbar.css'
+import { useState } from "react";
+import { IconSun, IconMoon, LogoMark } from "./Icons.jsx";
 
-const NAV_IDS = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
-
-export default function Navbar() {
-  const { theme, toggleTheme } = useTheme()
-  const { lang, toggleLang, t } = useLang()
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const activeId = useScrollSpy(NAV_IDS)
-
-  const NAV_LINKS = NAV_IDS.map(id => ({ id, label: t.nav[id] }))
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [menuOpen])
-
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setMenuOpen(false)
-  }
-
+export default function Navbar({ t, lang, setLang, theme, setTheme, active }) {
+  const [open, setOpen] = useState(false);
+  const links = [
+    { id: "work", label: t("nav.work") },
+    { id: "about", label: t("nav.about") },
+    { id: "skills", label: t("nav.skills") },
+    { id: "experience", label: t("nav.experience") },
+    { id: "projects", label: t("nav.projects") },
+    { id: "contact", label: t("nav.contact") },
+  ];
+  const close = () => setOpen(false);
   return (
-    <>
-      <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-        <div className="navbar__inner">
-          <button className="navbar__logo" onClick={() => scrollTo('home')}>
-            <img className="logo__img" src="GR.png" alt="" />
-            {/* <span className="logo__bracket">&lt;</span>
-            <span className="logo__name">GD</span>
-            <span className="logo__bracket">/&gt;</span> */}
-          </button>
-
-          <ul className="navbar__links">
-            {NAV_LINKS.map(({ id, label }) => (
-              <li key={id}>
-                <button
-                  className={`navbar__link ${activeId === id ? 'navbar__link--active' : ''}`}
-                  onClick={() => scrollTo(id)}
-                >
-                  {label}
-                  {activeId === id && <span className="navbar__link-dot" />}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          <div className="navbar__controls">
-            <button className="navbar__lang-btn" onClick={toggleLang} aria-label="Toggle language">
-              <span className={`lang-flag ${lang === 'en' ? 'active' : ''}`}>EN</span>
-              <span className="lang-sep">·</span>
-              <span className={`lang-flag ${lang === 'it' ? 'active' : ''}`}>IT</span>
-            </button>
-            <button className="navbar__theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-            <button className="navbar__menu-btn" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}>
-        <ul className="mobile-menu__links">
-          {NAV_LINKS.map(({ id, label }, i) => (
-            <li key={id} style={{ '--i': i }}>
-              <button
-                className={`mobile-menu__link ${activeId === id ? 'mobile-menu__link--active' : ''}`}
-                onClick={() => scrollTo(id)}
-              >
-                {label}
-              </button>
-            </li>
+    <nav className="nav">
+      <div className="shell nav-inner">
+        <a href="#work" className="nav-logo" onClick={close} aria-label="Home">
+          <img className="nav-logo-image" src="/public/images/GR.png" alt="" />
+        </a>
+        <div className="nav-links">
+          {links.map((l) => (
+            <a key={l.id} href={`#${l.id}`} className={active === l.id ? "active" : ""}>{l.label}</a>
           ))}
-        </ul>
-        <div className="mobile-menu__footer">
-          <button className="mobile-ctrl-btn" onClick={toggleLang}>
-            <span>{lang === 'en' ? '🇬🇧 English' : '🇮🇹 Italiano'}</span>
-            <span className="mobile-ctrl-arrow">→</span>
+        </div>
+        <div className="nav-tools">
+          <button
+            className="tool-btn"
+            onClick={() => setLang(lang === "en" ? "it" : "en")}
+            aria-label="Switch language"
+            title="Switch language"
+          >
+            <img className={"seg " + (lang === "en" ? "on" : "")} src="/public/images/uk_flag.svg" alt="" />
+            <img className={"seg " + (lang === "it" ? "on" : "")} src="/public/images/italy_flag.svg" alt="" />
+            {/* <span className={"seg " + (lang === "en" ? "on" : "")}>EN</span>
+            <span className={"seg " + (lang === "it" ? "on" : "")}>IT</span> */}
           </button>
-          <button className="mobile-ctrl-btn" onClick={toggleTheme}>
-            <span>{theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}</span>
-            <span className="mobile-ctrl-arrow">→</span>
+          <button
+            className="tool-btn accent"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            {theme === "dark" ? <IconSun /> : <IconMoon />}
+          </button>
+          <button className="nav-burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {open ? <><path d="M6 6l12 12" /><path d="M18 6L6 18" /></> : <><path d="M3 7h18" /><path d="M3 17h18" /></>}
+            </svg>
           </button>
         </div>
       </div>
-    </>
-  )
+      {open && (
+        <div className="shell"><div className="mobile-menu">
+          {links.map((l) => (
+            <a key={l.id} href={`#${l.id}`} className={active === l.id ? "active" : ""} onClick={close}>{l.label}</a>
+          ))}
+        </div></div>
+      )}
+    </nav>
+  );
 }
