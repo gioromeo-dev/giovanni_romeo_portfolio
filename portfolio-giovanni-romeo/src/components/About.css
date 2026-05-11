@@ -1,0 +1,114 @@
+/* Bento grid layout */
+.about-bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 300px;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.ab-bio {
+  grid-column: 1 / 4;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ab-bio p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--fg-mute);
+  text-wrap: pretty;
+  max-width: 62ch;
+  padding-bottom: 16px;
+}
+.ab-bio p:first-child {
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--fg);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.ab-bio p strong { color: var(--fg); }
+
+.ab-photo {
+  grid-column: 4;
+  grid-row: 1 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+}
+.ab-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-spring);
+}
+.ab-photo:hover img {
+  transform: scale(1.03);
+}
+
+/* Bento stat cells */
+.ab-stat {
+  grid-row: 2;
+  background: var(--bg-invert);
+  color: var(--fg-invert);
+  border-radius: 14px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 110px;
+  transition: transform 0.2s var(--ease-spring);
+}
+.ab-stat:hover {
+  transform: translateY(-2px);
+}
+.ab-stat .num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.ab-stat .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-invert-mute);
+}
+
+@media (max-width: 1080px) {
+  .about-bento {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .ab-bio { grid-column: 1 / 4; grid-row: 1; }
+  .ab-photo {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    aspect-ratio: 16/7;
+    max-height: 320px;
+  }
+  .ab-stat { grid-row: 3; }
+}
+
+@media (max-width: 720px) {
+  .about-bento {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .ab-bio  { grid-column: 1 / 3; }
+  .ab-photo {
+    grid-column: 1 / 3;
+    aspect-ratio: 4/3;
+  }
+  .ab-stat:last-child {
+    grid-column: 1 / 3;
+  }
+  .ab-bio p { font-size: 16px; }
+  .ab-bio p:first-child { font-size: 18px; }
+}

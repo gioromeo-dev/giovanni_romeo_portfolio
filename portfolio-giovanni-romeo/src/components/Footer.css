@@ -1,0 +1,30 @@
+.foot {
+  background: var(--bg-elev);
+  border-radius: var(--card-radius);
+  margin-top: var(--card-gap);
+  margin-bottom: var(--card-gap);
+  padding: 28px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-dim);
+  box-shadow: var(--card-shadow);
+}
+.foot .right  { text-align: right; }
+.foot .center { text-align: center; }
+
+@media (max-width: 720px) {
+  .foot {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 12px;
+    text-align: left;
+  }
+  .foot .right,
+  .foot .center { text-align: left; }
+}

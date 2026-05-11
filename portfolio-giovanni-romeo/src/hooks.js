@@ -1,13 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { I18N } from "./i18n.js";
 
 export function useI18n() {
-  const [lang, setLang] = useState(() => localStorage.getItem("portfolio.lang") || "en");
+  const [lang, setLangState] = useState(() => localStorage.getItem("portfolio.lang") || "en");
   useEffect(() => {
     localStorage.setItem("portfolio.lang", lang);
     document.documentElement.lang = lang;
   }, [lang]);
-  const t = useCallback((k) => (I18N[lang] && I18N[lang][k]) || k, [lang]);
+
+  const setLang = (next) => {
+    const root = document.documentElement;
+    root.classList.add("lang-out");
+    setTimeout(() => {
+      setLangState(next);
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("lang-out")));
+    }, 220);
+  };
+
+  const t = (k) => (I18N[lang]?.[k]) ?? k;
   return { lang, setLang, t };
 }
 
@@ -23,18 +33,19 @@ export function useTheme() {
 export function useScrollSpy(ids) {
   const [active, setActive] = useState(ids[0]);
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY + 120;
-      let cur = ids[0];
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.offsetTop <= y) cur = id;
-      }
-      setActive(cur);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
   }, [ids]);
   return active;
 }
@@ -45,8 +56,7 @@ export function useReveal() {
     const els = document.querySelectorAll(".reveal");
     const vh = window.innerHeight;
     els.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < vh * 0.9) el.classList.add("in");
+      if (el.getBoundingClientRect().top < vh * 0.9) el.classList.add("in");
     });
     const io = new IntersectionObserver(
       (entries) => {

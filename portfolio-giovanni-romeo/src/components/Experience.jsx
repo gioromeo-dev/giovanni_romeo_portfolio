@@ -1,8 +1,5 @@
-const ITEMS = [
-  { key: "j1", tags: ["TypeScript", "Next.js", "Postgres", "Design"] },
-  { key: "j2", tags: ["React", "Design Systems", "Performance"] },
-  { key: "j3", tags: ["Web", "Brand", "Hospitality"] },
-];
+import { EXP_ITEMS } from "../data.js";
+import "./Experience.css";
 
 export default function Experience({ t }) {
   return (
@@ -11,26 +8,21 @@ export default function Experience({ t }) {
         <div className="ix">{t("exp.ix")}</div>
         <h2>{t("exp.head")}</h2>
       </div>
-      <div className="timeline">
-        <div className="mono upper" style={{ fontSize: 11, color: "var(--fg-mute)" }}>
-          {t("exp.title")}
-        </div>
-        <div className="tl-list">
-          {ITEMS.map((it) => (
-            <div className="tl-item" key={it.key}>
-              <div className="tl-when">{t(`exp.${it.key}.when`)}</div>
-              <div className="tl-body">
-                <h3>{t(`exp.${it.key}.title`)}</h3>
-                <div className="role">{t(`exp.${it.key}.role`)}</div>
-                <p>{t(`exp.${it.key}.desc`)}</p>
-                <div className="tl-tags">
-                  {it.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                </div>
+      <div className="tl-list">
+        {EXP_ITEMS.map((it) => (
+          <div className="tl-item" key={it.key}>
+            <div className="tl-when">{t(`exp.${it.key}.when`)}</div>
+            <div className="tl-body">
+              <h3>{t(`exp.${it.key}.title`)}</h3>
+              <div className="role">{t(`exp.${it.key}.role`)}</div>
+              <p>{t(`exp.${it.key}.desc`)}</p>
+              <div className="tl-tags">
+                {it.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
-              <div className="tl-loc">{t(`exp.${it.key}.loc`)}</div>
             </div>
-          ))}
-        </div>
+            <div className="tl-loc">{t(`exp.${it.key}.loc`)}</div>
+          </div>
+        ))}
       </div>
     </section>
   );

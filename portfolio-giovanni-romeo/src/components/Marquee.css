@@ -1,0 +1,74 @@
+.mq-band {
+  --_bg: #000;
+  position: relative;
+  background: var(--_bg);
+  overflow: hidden;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  user-select: none;
+}
+
+/* Edge fade masks */
+.mq-band::before,
+.mq-band::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.mq-band::before {
+  left: 0;
+  background: linear-gradient(to right, var(--_bg) 0%, transparent 100%);
+}
+.mq-band::after {
+  right: 0;
+  background: linear-gradient(to left, var(--_bg) 0%, transparent 100%);
+}
+
+.mq-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: mq-run 42s linear infinite;
+  will-change: transform;
+}
+.mq-band:hover .mq-track {
+  animation-play-state: paused;
+}
+
+.mq-item {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-invert);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.mq-sep {
+  color: var(--accent);
+  font-size: 7px;
+  line-height: 1;
+  margin: 0 22px;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0.9;
+}
+
+@keyframes mq-run {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-track { animation: none; }
+}

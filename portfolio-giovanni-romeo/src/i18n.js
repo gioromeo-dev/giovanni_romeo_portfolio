@@ -114,7 +114,7 @@ export const I18N = {
 
     // footer
     "foot.copy": "© 2026 — All rights reserved",
-    "foot.built": "Built with care in Milan",
+    "foot.built": "Built with care in Italy",
     "foot.ver": "v 2.6.0",
   },
   it: {
