@@ -1,13 +1,14 @@
 .mq-band {
-  --_bg: #000;
+  --_bg: var(--page-bg);
+
   position: relative;
   background: var(--_bg);
   overflow: hidden;
   height: 72px;
   display: flex;
   align-items: center;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  /* border-top: 1px solid rgba(255,255,255,0.07); */
+  /* border-bottom: 1px solid rgba(255,255,255,0.07); */
   user-select: none;
 }
 
@@ -37,9 +38,6 @@
   white-space: nowrap;
   animation: mq-run 42s linear infinite;
   will-change: transform;
-}
-.mq-band:hover .mq-track {
-  animation-play-state: paused;
 }
 
 .mq-item {

@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
 import { I18N } from "./i18n.js";
+import config from "./assets/config.json";
+
+const enabledLangs = Object.entries(config.languages)
+  .filter(([, on]) => on)
+  .map(([code]) => code);
+
+const defaultLang = enabledLangs[0] ?? "en";
 
 export function useI18n() {
-  const [lang, setLangState] = useState(() => localStorage.getItem("portfolio.lang") || "en");
+  const [lang, setLangState] = useState(() => {
+    const stored = localStorage.getItem("portfolio.lang");
+    return enabledLangs.includes(stored) ? stored : defaultLang;
+  });
+
   useEffect(() => {
     localStorage.setItem("portfolio.lang", lang);
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = (next) => setLangState(next);
+  const setLang = (next) => {
+    if (enabledLangs.includes(next)) setLangState(next);
+  };
 
   const t = (k) => (I18N[lang]?.[k]) ?? k;
   return { lang, setLang, t };

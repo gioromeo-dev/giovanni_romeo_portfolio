@@ -2,12 +2,14 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import { fadeUp, stagger, viewport } from "../animations.js";
 import { T } from "./T.jsx";
+import { useLang } from "../LangContext.js";
 import { PROJECTS } from "../data.js";
 import "./Projects.css";
 
 const headStagger = stagger(0.08, 0.05);
 
 export default function Projects({ t }) {
+  const lang = useLang();
   const sectionRef = useRef(null);
   const stripRef = useRef(null);
   const trackRef = useRef(null);
@@ -102,14 +104,22 @@ export default function Projects({ t }) {
         <div className="proj-strip" ref={stripRef}>
           <div className="proj-track" ref={trackRef}>
             {PROJECTS.map((p, i) => (
-              <a className="proj-card" key={p.key} href="#" onClick={(e) => e.preventDefault()}>
-                <div className={`proj-cover ${p.cover}`}>
+              <a
+                className="proj-card"
+                key={p.key}
+                href={p.github || "#"}
+                target={p.github ? "_blank" : undefined}
+                rel={p.github ? "noopener noreferrer" : undefined}
+                onClick={!p.github ? (e) => e.preventDefault() : undefined}
+              >
+                <div className={`proj-cover${p.style ? ` ${p.style}` : ""}`}>
+                  {p.image && <img className="proj-cover-img" src={p.image} alt="" loading="lazy" />}
                   <span className="ph-num">{`0${i + 1}`}</span>
                 </div>
                 <div className="proj-body">
-                  <span className="pill"><T>{t(`proj.${p.key}.tag`)}</T></span>
-                  <h3><T>{t(`proj.${p.key}.title`)}</T></h3>
-                  <p className="desc"><T block>{t(`proj.${p.key}.desc`)}</T></p>
+                  <span className="pill"><T>{p[lang].tag}</T></span>
+                  <h3><T>{p[lang].title}</T></h3>
+                  <p className="desc"><T block>{p[lang].desc}</T></p>
                   <span className="explore"><T>{t("proj.viewcase")}</T> →</span>
                 </div>
               </a>

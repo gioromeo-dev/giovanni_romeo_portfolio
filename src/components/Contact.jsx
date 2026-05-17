@@ -12,7 +12,7 @@ const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 const bodyStagger = stagger(0.09, 0.1);
 const fieldStagger = stagger(0.07, 0.15);
 
-export default function Contact({ t }) {
+export default function Contact({ t, showForm }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
 
@@ -74,44 +74,46 @@ export default function Contact({ t }) {
           </div>
         </motion.div>
 
-        <motion.div className="contact-form-box" variants={fadeUp}>
-          <motion.form
-            className="contact-form"
-            onSubmit={handleSubmit}
-            noValidate
-            variants={fieldStagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-          >
-            <motion.div className="cf-field" variants={fadeUp}>
-              <label htmlFor="cf-name"><T>{t("contact.form.name")}</T></label>
-              <input id="cf-name" name="name" type="text" required autoComplete="name"
-                placeholder="Giovanni Romeo" value={form.name} onChange={handleChange} />
-            </motion.div>
-            <motion.div className="cf-field" variants={fadeUp}>
-              <label htmlFor="cf-email"><T>{t("contact.form.email")}</T></label>
-              <input id="cf-email" name="email" type="email" required autoComplete="email"
-                placeholder="ciao@example.com" value={form.email} onChange={handleChange} />
-            </motion.div>
-            <motion.div className="cf-field" variants={fadeUp}>
-              <label htmlFor="cf-message"><T>{t("contact.form.message")}</T></label>
-              <textarea id="cf-message" name="message" required
-                placeholder={t("contact.form.placeholder")}
-                value={form.message} onChange={handleChange} />
-            </motion.div>
-            <motion.div className="cf-footer" variants={fadeUp}>
-              <button type="submit" className="btn primary" disabled={status === "sending"}>
-                {status === "sending"
-                  ? <T>{t("contact.form.sending")}</T>
-                  : <T>{t("contact.form.send")}</T>}
-                {status !== "sending" && <span className="arrow">→</span>}
-              </button>
-              {status === "sent"  && <span className="cf-status ok"><T>{t("contact.form.sent")}</T></span>}
-              {status === "error" && <span className="cf-status err"><T>{t("contact.form.error")}</T></span>}
-            </motion.div>
-          </motion.form>
-        </motion.div>
+        {showForm && (
+          <motion.div className="contact-form-box" variants={fadeUp}>
+            <motion.form
+              className="contact-form"
+              onSubmit={handleSubmit}
+              noValidate
+              variants={fieldStagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewport}
+            >
+              <motion.div className="cf-field" variants={fadeUp}>
+                <label htmlFor="cf-name"><T>{t("contact.form.name")}</T></label>
+                <input id="cf-name" name="name" type="text" required autoComplete="name"
+                  placeholder="Giovanni Romeo" value={form.name} onChange={handleChange} />
+              </motion.div>
+              <motion.div className="cf-field" variants={fadeUp}>
+                <label htmlFor="cf-email"><T>{t("contact.form.email")}</T></label>
+                <input id="cf-email" name="email" type="email" required autoComplete="email"
+                  placeholder="ciao@example.com" value={form.email} onChange={handleChange} />
+              </motion.div>
+              <motion.div className="cf-field" variants={fadeUp}>
+                <label htmlFor="cf-message"><T>{t("contact.form.message")}</T></label>
+                <textarea id="cf-message" name="message" required
+                  placeholder={t("contact.form.placeholder")}
+                  value={form.message} onChange={handleChange} />
+              </motion.div>
+              <motion.div className="cf-footer" variants={fadeUp}>
+                <button type="submit" className="btn primary" disabled={status === "sending"}>
+                  {status === "sending"
+                    ? <T>{t("contact.form.sending")}</T>
+                    : <T>{t("contact.form.send")}</T>}
+                  {status !== "sending" && <span className="arrow">→</span>}
+                </button>
+                {status === "sent"  && <span className="cf-status ok"><T>{t("contact.form.sent")}</T></span>}
+                {status === "error" && <span className="cf-status err"><T>{t("contact.form.error")}</T></span>}
+              </motion.div>
+            </motion.form>
+          </motion.div>
+        )}
       </motion.div>
       <p className="contact-copy"><T>{t("foot.copy")}</T></p>
     </section>

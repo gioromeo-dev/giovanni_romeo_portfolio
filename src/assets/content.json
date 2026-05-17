@@ -1,49 +1,308 @@
 {
   "data": {
+    "marquee": [
+      "Solution Architect",
+      "Power Platform",
+      "Azure",
+      "Based in Italy",
+      "React · Vite",
+      "Digital Craftsman",
+      "Full Lifecycle Delivery",
+      "Microsoft Expert",
+      "Est. 2016",
+      "Open to Collaborate"
+    ],
     "skills": [
-      { "key": "cat1", "tags": ["Power Apps", "Power Automate", "Power BI", "Power Pages", "HTML/CSS", "JavaScript", "Three.js"] },
-      { "key": "cat2", "tags": ["Microsoft Azure", "Azure Functions", "Azure API Management", "Azure Logic Apps", "REST API", "Dataverse", "Dynamics 365"] },
-      { "key": "cat3", "tags": ["Solution Architecture", "System Integration", "Requirements Analysis", "Digital Transformation", "Custom Connectors", "Plugin Development"] },
-      { "key": "cat4", "tags": ["Stakeholder Management", "Project Management", "Team Leadership", "Client Relationship Management"] }
+      {
+        "key": "cat1",
+        "tags": [
+          "Power Apps",
+          "Power Automate",
+          "Power BI",
+          "Power Pages",
+          "HTML/CSS",
+          "JavaScript",
+          "Three.js"
+        ]
+      },
+      {
+        "key": "cat2",
+        "tags": [
+          "Microsoft Azure",
+          "Azure Functions",
+          "Azure API Management",
+          "Azure Logic Apps",
+          "REST API",
+          "Dataverse",
+          "Dynamics 365"
+        ]
+      },
+      {
+        "key": "cat3",
+        "tags": [
+          "Solution Architecture",
+          "System Integration",
+          "Requirements Analysis",
+          "Digital Transformation",
+          "Custom Connectors",
+          "Plugin Development"
+        ]
+      },
+      {
+        "key": "cat4",
+        "tags": [
+          "Stakeholder Management",
+          "Project Management",
+          "Team Leadership",
+          "Client Relationship Management"
+        ]
+      }
     ],
     "experience": [
       {
         "key": "j1",
         "logo": "/images/jobs/deloitte.jpg",
         "positions": [
-          { "posKey": "j1", "tags": ["Power Platform", "Azure", "Solution Architecture", "Stakeholder Management"] }
+          {
+            "posKey": "j1",
+            "tags": [
+              "Power Platform",
+              "Azure",
+              "Solution Architecture",
+              "Stakeholder Management"
+            ]
+          }
         ]
       },
       {
         "key": "j2",
         "logo": "/images/jobs/partymonster.jpg",
         "positions": [
-          { "posKey": "j2", "tags": ["Video Mapping", "Light Design", "Audio Engineering", "Team Leadership"] }
+          {
+            "posKey": "j2",
+            "tags": [
+              "Video Mapping",
+              "Light Design",
+              "Audio Engineering",
+              "Team Leadership"
+            ]
+          }
         ]
       },
       {
         "key": "j3",
         "logo": "/images/jobs/airett.jpg",
         "positions": [
-          { "posKey": "j3", "tags": ["Three.js", "HTML/CSS", "JavaScript", "System Integration"] }
+          {
+            "posKey": "j3",
+            "tags": ["Three.js", "HTML/CSS", "JavaScript", "System Integration"]
+          }
         ]
       }
     ],
     "projects": [
-      { "key": "p1", "cover": "" },
-      { "key": "p2", "cover": "alt" },
-      { "key": "p3", "cover": "alt2" },
-      { "key": "p4", "cover": "alt3" },
-      { "key": "p5", "cover": "alt4" },
-      { "key": "p6", "cover": "alt5" },
-      { "key": "p7", "cover": "alt6" },
-      { "key": "p8", "cover": "alt7" }
+      {
+        "key": "p1",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/giovanni_romeo_portfolio",
+        "en": {
+          "title": "This Portfolio",
+          "tag": "React / Vite",
+          "desc": "This site. Built with React 19 and Vite, featuring a bilingual EN/IT interface, dark/light themes, scroll animations via Motion, and a fully responsive layout."
+        },
+        "it": {
+          "title": "Questo Portfolio",
+          "tag": "React / Vite",
+          "desc": "Questo sito. Realizzato con React 19 e Vite, con interfaccia bilingue EN/IT, tema scuro/chiaro, animazioni allo scroll con Motion e layout completamente responsive."
+        }
+      },
+      {
+        "key": "p2",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/graduation_invitation",
+        "en": {
+          "title": "Graduation Invitation",
+          "tag": "Web",
+          "desc": "A personal animated web invitation for my university graduation. Fullscreen video background, scroll-triggered animations, event details and a quotes section."
+        },
+        "it": {
+          "title": "Invito di Laurea",
+          "tag": "Web",
+          "desc": "Invito web animato personale per la mia laurea. Video di sfondo a schermo intero, animazioni allo scroll, dettagli dell'evento e sezione citazioni."
+        }
+      },
+      {
+        "key": "p3",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev?tab=repositories",
+        "en": {
+          "title": "Birthday Invitation",
+          "tag": "Web / Apple",
+          "desc": "A digital birthday invite hosted on iCloud, integrating Apple MapKit for the event location and MusicKit for background music."
+        },
+        "it": {
+          "title": "Invito di Compleanno",
+          "tag": "Web / Apple",
+          "desc": "Invito digitale di compleanno ospitato su iCloud, con integrazione Apple MapKit per la posizione dell'evento e MusicKit per la musica di sottofondo."
+        }
+      },
+      {
+        "key": "p4",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/alexa_handoff_spotify",
+        "en": {
+          "title": "Alexa Handoff Spotify",
+          "tag": "Spotify API",
+          "desc": "A web bridge between Amazon Alexa and Spotify. Handles the OAuth 2.0 flow and transfers playback to a target device, letting Alexa skills hand off music control."
+        },
+        "it": {
+          "title": "Alexa Handoff Spotify",
+          "tag": "Spotify API",
+          "desc": "Bridge web tra Amazon Alexa e Spotify. Gestisce il flusso OAuth 2.0 e trasferisce la riproduzione su un dispositivo target, permettendo alle Alexa Skill di delegare il controllo musicale."
+        }
+      },
+      {
+        "key": "p5",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/spo_app",
+        "en": {
+          "title": "SPO App",
+          "tag": "Mobile / Cordova",
+          "desc": "An Android hybrid app for restaurant bookings and food orders. Covers the full flow: browsing venues, ordering, cart, payment, QR check-in and reservation management."
+        },
+        "it": {
+          "title": "SPO App",
+          "tag": "Mobile / Cordova",
+          "desc": "App Android ibrida per prenotazioni e ordini al ristorante. Copre l'intero flusso: sfoglia locali, ordina, carrello, pagamento, check-in QR e gestione prenotazioni."
+        }
+      },
+      {
+        "key": "p6",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/fanta_sanremo",
+        "en": {
+          "title": "Fanta Sanremo",
+          "tag": "Web App",
+          "desc": "A real-time leaderboard for a private Fantasy Sanremo competition. Fetches live artist scores from the official API and ranks participants by their chosen singers."
+        },
+        "it": {
+          "title": "Fanta Sanremo",
+          "tag": "Web App",
+          "desc": "Classifica in tempo reale per una competizione privata di Fanta Sanremo. Recupera i punteggi live dall'API ufficiale e classifica i partecipanti in base ai cantanti scelti."
+        }
+      },
+      {
+        "key": "p7",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/flux_converter",
+        "en": {
+          "title": "Flux Converter",
+          "tag": "PHP / MVC",
+          "desc": "A PHP web app for converting files between formats — PDF, Word, PowerPoint, Excel, eBook, JPG and more. Built with a clean MVC architecture and powered by ConvertAPI."
+        },
+        "it": {
+          "title": "Flux Converter",
+          "tag": "PHP / MVC",
+          "desc": "Web app PHP per la conversione di file tra formati diversi — PDF, Word, PowerPoint, Excel, eBook, JPG e altro. Architettura MVC, basata su ConvertAPI."
+        }
+      },
+      {
+        "key": "p8",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev?tab=repositories",
+        "en": {
+          "title": "Car Crash Game",
+          "tag": "Java / Game",
+          "desc": "A 2D top-down car game built in Java with AWT/Swing for a university programming course. Features collision detection, dynamic obstacle spawning and a speed/lives HUD."
+        },
+        "it": {
+          "title": "Car Crash Game",
+          "tag": "Java / Gioco",
+          "desc": "Gioco top-down 2D in Java con AWT/Swing, sviluppato per un corso universitario. Include rilevamento collisioni, spawn dinamico degli ostacoli e HUD con velocità e vite."
+        }
+      },
+      {
+        "key": "p9",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "",
+        "en": {
+          "title": "Safari Extension + Dashboard",
+          "tag": "iOS / Swift",
+          "desc": "An iOS Safari Web Extension paired with a SwiftUI companion dashboard. The extension communicates with pages via content scripts; the dashboard provides a native macOS/iOS interface."
+        },
+        "it": {
+          "title": "Safari Extension + Dashboard",
+          "tag": "iOS / Swift",
+          "desc": "Safari Web Extension per iOS abbinata a una dashboard companion SwiftUI. L'estensione comunica con le pagine tramite content script; la dashboard offre un'interfaccia nativa macOS/iOS."
+        }
+      },
+      {
+        "key": "p10",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "",
+        "en": {
+          "title": "Curse Generator",
+          "tag": "Web App",
+          "desc": "A tongue-in-cheek browser app that combines random names and insults from JSON datasets to generate absurd curse phrases. Censored and uncensored modes included."
+        },
+        "it": {
+          "title": "Curse Generator",
+          "tag": "Web App",
+          "desc": "App browser che combina nomi casuali e insulti da file JSON per generare frasi assurde. Disponibile in modalità censurata e non censurata."
+        }
+      },
+      {
+        "key": "p11",
+        "image": "/images/projects/portfolio.png",
+        "style": "alt",
+        "github": "",
+        "en": {
+          "title": "Track Parcel Apple",
+          "tag": "Apple Pay",
+          "desc": "A proof-of-concept page demonstrating Apple Wallet button integration via the Apple Pay JS SDK, with customisable styling and a one-tap link to an Apple Pay demo order."
+        },
+        "it": {
+          "title": "Track Parcel Apple",
+          "tag": "Apple Pay",
+          "desc": "Proof of concept che dimostra l'integrazione del pulsante Apple Wallet tramite Apple Pay JS SDK, con stile personalizzabile e link diretto a un ordine demo."
+        }
+      }
     ],
     "contact": [
-      { "key": "l1", "icon": "mail",     "val": "gioromeo.mail@icloud.com",     "href": "mailto:gioromeo.mail@icloud.com" },
-      { "key": "l2", "icon": "github",   "val": "github.com/Giannidmg",          "href": "https://github.com/Giannidmg" },
-      { "key": "l3", "icon": "linkedin", "val": "linkedin.com/in/giovanniromeo", "href": "https://www.linkedin.com/in/giovanni-romeo-43a562246/" },
-      { "key": "l4", "icon": "readcv",   "val": "read.cv/giovanniromeo",         "href": "#" }
+      {
+        "key": "l1",
+        "icon": "mail",
+        "val": "gioromeo.mail@icloud.com",
+        "href": "mailto:gioromeo.mail@icloud.com"
+      },
+      {
+        "key": "l2",
+        "icon": "github",
+        "val": "github.com/Giannidmg",
+        "href": "https://github.com/Giannidmg"
+      },
+      {
+        "key": "l3",
+        "icon": "linkedin",
+        "val": "linkedin.com/in/giovanniromeo",
+        "href": "https://www.linkedin.com/in/giovanni-romeo-43a562246/"
+      },
+      {
+        "key": "l4",
+        "icon": "readcv",
+        "val": "read.cv/giovanniromeo",
+        "href": "#"
+      }
     ]
   },
 
@@ -120,43 +379,13 @@
 
     "proj.title": "Projects",
     "proj.ix": "// 04 — Projects",
-    "proj.head": "Projects section.",
-    "proj.head.meta": "A small set of recent things I've shipped or contributed to. Replace these with your own work.",
-    "proj.viewcase": "View case",
-    "proj.p1.title": "Atlas — banking dashboard",
-    "proj.p1.tag": "Fintech",
-    "proj.p1.desc": "A consumer banking dashboard built around clarity. Custom charting layer, smart transactions and shared budgets.",
-    "proj.p2.title": "Field Notes",
-    "proj.p2.tag": "Editorial",
-    "proj.p2.desc": "A long-form publication for a culture studio. Bespoke article templates and a custom CMS.",
-    "proj.p3.title": "Cardinal Type",
-    "proj.p3.tag": "Identity",
-    "proj.p3.desc": "Brand & site for an indie type foundry. Includes a live specimen tool.",
-    "proj.p4.title": "Loop OS",
-    "proj.p4.tag": "Internal",
-    "proj.p4.desc": "An internal tool for managing studio rituals — standups, retros, time blocks.",
-    "proj.p5.title": "Project Five",
-    "proj.p5.tag": "Tag",
-    "proj.p5.desc": "Description for project five.",
-    "proj.p6.title": "Project Six",
-    "proj.p6.tag": "Tag",
-    "proj.p6.desc": "Description for project six.",
-    "proj.p7.title": "Project Seven",
-    "proj.p7.tag": "Tag",
-    "proj.p7.desc": "Description for project seven.",
-    "proj.p8.title": "Project Eight",
-    "proj.p8.tag": "Tag",
-    "proj.p8.desc": "Description for project eight.",
+    "proj.head": "Side projects.",
+    "proj.head.meta": "Personal projects built outside of work — spanning web apps, mobile, games, and Apple platform tools.",
+    "proj.viewcase": "View on GitHub",
 
     "contact.title": "Contact",
     "contact.ix": "// 05 — Contact",
     "contact.head": "If you are interested.",
-    "contact.claim1": "Got a project?",
-    "contact.claim2": "Drop me a",
-    "contact.claim3": "line",
-    "contact.claim4": ".",
-    "contact.ix": "// 05 — Contatti",
-    "contact.head": "Se sei interessato.",
     "contact.claim1": "Now you know",
     "contact.claim2": "how to",
     "contact.claim3": "find me",
@@ -252,33 +481,9 @@
 
     "proj.title": "Progetti",
     "proj.ix": "// 04 — Progetti",
-    "proj.head": "Selezione dei progetti.",
-    "proj.head.meta": "Un piccolo insieme di lavori recenti. Sostituiscili con i tuoi.",
-    "proj.viewcase": "Apri case study",
-    "proj.p1.title": "Atlas — dashboard bancaria",
-    "proj.p1.tag": "Fintech",
-    "proj.p1.desc": "Una dashboard bancaria consumer pensata per la chiarezza. Charting custom, transazioni intelligenti e budget condivisi.",
-    "proj.p2.title": "Field Notes",
-    "proj.p2.tag": "Editoriale",
-    "proj.p2.desc": "Pubblicazione long-form per uno studio culturale. Template d'articolo su misura e CMS dedicato.",
-    "proj.p3.title": "Cardinal Type",
-    "proj.p3.tag": "Brand",
-    "proj.p3.desc": "Brand e sito per una type foundry indipendente. Include uno specimen interattivo.",
-    "proj.p4.title": "Loop OS",
-    "proj.p4.tag": "Interno",
-    "proj.p4.desc": "Strumento interno per gestire i rituali dello studio — standup, retro, time block.",
-    "proj.p5.title": "Progetto Cinque",
-    "proj.p5.tag": "Tag",
-    "proj.p5.desc": "Descrizione del progetto cinque.",
-    "proj.p6.title": "Progetto Sei",
-    "proj.p6.tag": "Tag",
-    "proj.p6.desc": "Descrizione del progetto sei.",
-    "proj.p7.title": "Progetto Sette",
-    "proj.p7.tag": "Tag",
-    "proj.p7.desc": "Descrizione del progetto sette.",
-    "proj.p8.title": "Progetto Otto",
-    "proj.p8.tag": "Tag",
-    "proj.p8.desc": "Descrizione del progetto otto.",
+    "proj.head": "Progetti personali.",
+    "proj.head.meta": "Progetti realizzati al di fuori del lavoro — web app, mobile, giochi e strumenti per la piattaforma Apple.",
+    "proj.viewcase": "Vedi su GitHub",
 
     "contact.title": "Contatti",
     "contact.ix": "// 05 — Contatti",

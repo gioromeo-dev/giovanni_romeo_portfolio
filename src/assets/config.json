@@ -1,0 +1,35 @@
+{
+  "sectionAccents": {
+    "work":       { "accent": "#EEFF00", "accentHover": "#FFF850", "accentInk": "#13110A" },
+    "about":      { "accent": "#FF3500", "accentHover": "#FF5C30", "accentInk": "#1A0800" },
+    "skills":     { "accent": "#005CFF", "accentHover": "#2B78FF", "accentInk": "#F0EEEA" },
+    "experience": { "accent": "#13FF00", "accentHover": "#40FF28", "accentInk": "#021400" },
+    "projects":   { "accent": "#7E00FF", "accentHover": "#9B2FFF", "accentInk": "#F0EEEA" },
+    "contact":    { "accent": "#FF00A5", "accentHover": "#FF28B8", "accentInk": "#1A000E" }
+  },
+  "sections": {
+    "hero":                   true,
+    "marquee_after_hero":     true,
+    "about":                  true,
+    "skills":                 true,
+    "experience":             true,
+    "projects":               true,
+    "marquee_after_projects": true,
+    "contact":                true
+  },
+  "languages": {
+    "en": true,
+    "it": true
+  },
+  "features": {
+    "availabilityBadge": true,
+    "contactForm":       true
+  },
+  "splash": {
+    "enabled":       true,
+    "showOn":        "session",
+    "video":         "/videos/splash/splash_4.mp4",
+    "fallbackMs":    6000,
+    "fadeDurationMs": 700
+  }
+}

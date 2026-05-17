@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Splash.css";
 
-export default function Splash({ onDone }) {
+export default function Splash({ onDone, video, fallbackMs = 6000, fadeDurationMs = 700 }) {
   const videoRef = useRef(null);
   const [fading, setFading] = useState(false);
   const [done, setDone] = useState(false);
@@ -15,27 +15,31 @@ export default function Splash({ onDone }) {
       setTimeout(() => {
         setDone(true);
         onDone?.();
-      }, 700);
+      }, fadeDurationMs);
     };
 
     v.addEventListener("ended", finish);
-    const fallback = setTimeout(finish, 6000);
+    const fallback = setTimeout(finish, fallbackMs);
     v.play().catch(() => {});
 
     return () => {
       v.removeEventListener("ended", finish);
       clearTimeout(fallback);
     };
-  }, [onDone]);
+  }, [onDone, fallbackMs, fadeDurationMs]);
 
   if (done) return null;
 
   return (
-    <div className={`splash${fading ? " splash--out" : ""}`} aria-hidden="true">
+    <div
+      className={`splash${fading ? " splash--out" : ""}`}
+      style={fading ? { transition: `opacity ${fadeDurationMs}ms ease` } : undefined}
+      aria-hidden="true"
+    >
       <video
         ref={videoRef}
         className="splash-video"
-        src="/videos/splash_4.mp4"
+        src={video}
         muted
         playsInline
         preload="auto"

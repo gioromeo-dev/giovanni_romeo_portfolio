@@ -10,7 +10,7 @@ const portrait = {
   show: { opacity: 1, scale: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.2 } },
 };
 
-export default function Hero({ t, revealed }) {
+export default function Hero({ t, revealed, showAvailability }) {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const animatedRef = useRef(false); // true after portrait entrance completes
@@ -64,12 +64,14 @@ export default function Hero({ t, revealed }) {
               <T>{t("hero.cta2")}</T> <span className="arrow">↗</span>
             </a>
           </motion.div>
-          <motion.div className="hero-meta" variants={fadeUp}>
-            <div className="status-pill">
-              <span className="status-dot" />
-              <T>{t("hero.status")}</T>
-            </div>
-          </motion.div>
+          {showAvailability && (
+            <motion.div className="hero-meta" variants={fadeUp}>
+              <div className="status-pill">
+                <span className="status-dot" />
+                <T>{t("hero.status")}</T>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
 
         <motion.div
@@ -87,7 +89,7 @@ export default function Hero({ t, revealed }) {
           <video
             ref={videoRef}
             className="hero-memoji"
-            src="/videos/memoji.mp4"
+            src="/videos/site/memoji.mp4"
             muted
             playsInline
             preload="auto"

@@ -130,6 +130,7 @@
 @media (max-width: 880px) {
   .nav-links { display: none; }
   .nav-inner { grid-template-columns: auto 1fr auto; }
+  .nav-tools { grid-column: 3; }
   .nav-burger {
     display: inline-flex;
     width: 40px;

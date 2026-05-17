@@ -25,7 +25,7 @@ export default function About({ t }) {
           <p><T block>{t("about.p3")}</T></p>
         </motion.div>
         <motion.div className="ab-photo" variants={scaleIn}>
-          <img src="/images/profile_portfolio.jpeg" alt="Giovanni Romeo" />
+          <img src="/images/site/profile_portfolio.jpeg" alt="Giovanni Romeo" />
         </motion.div>
         <motion.div className="ab-stat n1" variants={fadeUp}>
           <span className="num"><T>{t("about.numfact1")}</T></span>

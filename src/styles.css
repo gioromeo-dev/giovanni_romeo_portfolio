@@ -1,5 +1,26 @@
+/* ============= Animatable custom properties ============= */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #EEFF00;
+}
+@property --accent-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #FFF850;
+}
+@property --accent-ink {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(20, 18, 0, 1);
+}
+
 /* ============= Tokens ============= */
 :root {
+  transition:
+    --accent       0.6s ease,
+    --accent-hover 0.6s ease,
+    --accent-ink   0.6s ease;
   color-scheme: dark;
 
   --bg: #ffffff;
@@ -10,7 +31,8 @@
   --bg-card: rgba(255,255,255,1);
   --line: rgba(212,208,203,1);
   --line-soft: rgba(230,228,224,1);
-  --fg: rgba(19,17,15,1);
+  --fg: rgba(0,0,0,1);
+  /* --fg: rgba(19,17,15,1); */
   --fg-mute: rgba(81,76,71,1);
   --fg-dim: rgba(145,140,133,1);
   --fg-invert: rgba(245,243,240,1);
@@ -37,7 +59,8 @@
     0 4px 16px rgba(0,0,0,0.08),
     0 0 0 1px rgba(0,0,0,0.04);
 
-  --page-bg: rgba(8,7,6,1);
+  /* --page-bg: rgba(8,7,6,1); */
+  --page-bg: rgba(0,0,0,1);
   --page-fg: rgba(240,238,234,1);
 
   --display: "Space Grotesk", "Helvetica Neue", Helvetica, sans-serif;
@@ -140,7 +163,7 @@ button {
 .hero {
   background: var(--bg-elev);
   border-radius: var(--card-radius);
-  margin-top: var(--card-gap);
+  margin: var(--card-gap);
   padding: 64px 56px 80px;
   position: relative;
   color: var(--fg);
