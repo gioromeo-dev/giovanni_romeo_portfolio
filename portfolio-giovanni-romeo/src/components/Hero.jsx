@@ -13,13 +13,20 @@ const portrait = {
 export default function Hero({ t, revealed }) {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
+  const animatedRef = useRef(false); // true after portrait entrance completes
 
   useEffect(() => {
     const section = sectionRef.current;
     const video = videoRef.current;
     if (!section || !video) return;
+    // On scroll-back: restart only after the entrance animation has already run
     const io = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { video.currentTime = 0; video.play(); } },
+      ([entry]) => {
+        if (entry.isIntersecting && animatedRef.current) {
+          video.currentTime = 0;
+          video.play();
+        }
+      },
       { threshold: 0.1 }
     );
     io.observe(section);
@@ -70,6 +77,12 @@ export default function Hero({ t, revealed }) {
           variants={portrait}
           initial="hidden"
           animate={revealed ? "show" : "hidden"}
+          onAnimationComplete={(def) => {
+            if (def === "show") {
+              animatedRef.current = true;
+              videoRef.current?.play();
+            }
+          }}
         >
           <video
             ref={videoRef}
@@ -78,7 +91,6 @@ export default function Hero({ t, revealed }) {
             muted
             playsInline
             preload="auto"
-            autoPlay
           />
         </motion.div>
       </div></div>
