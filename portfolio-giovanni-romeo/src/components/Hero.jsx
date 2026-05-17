@@ -1,5 +1,14 @@
 import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import { fadeUp, scaleIn, stagger } from "../animations.js";
+import { T } from "./T.jsx";
 import "./Hero.css";
+
+const heroStagger = stagger(0.09, 0.15);
+const portrait = {
+  hidden: { opacity: 0, scale: 0.9 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.2 } },
+};
 
 export default function Hero({ t, revealed }) {
   const sectionRef = useRef(null);
@@ -9,17 +18,10 @@ export default function Hero({ t, revealed }) {
     const section = sectionRef.current;
     const video = videoRef.current;
     if (!section || !video) return;
-
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.currentTime = 0;
-          video.play();
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) { video.currentTime = 0; video.play(); } },
       { threshold: 0.1 }
     );
-
     io.observe(section);
     return () => io.disconnect();
   }, []);
@@ -27,31 +29,48 @@ export default function Hero({ t, revealed }) {
   return (
     <section ref={sectionRef} id="work" className={`hero${revealed ? " hero--in" : ""}`}>
       <div className="shell"><div className="hero-grid">
-        <div className="hero-content">
-          <div className="hero-eyebrow">{t("hero.eyebrow")}</div>
-          <h1>
-            {t("hero.name1")}<br />
-            <span className="accent">{t("hero.italic")}</span>{" "}
-            {t("hero.name2")}
-          </h1>
-          <div className="hero-role">{t("hero.role")}</div>
-          <p className="hero-sub">{t("hero.sub")}</p>
-          <div className="hero-cta-row">
-            <a href="#projects" className="btn primary">
-              {t("hero.cta1")} <span className="arrow">→</span>
+        <motion.div
+          className="hero-content"
+          variants={heroStagger}
+          initial="hidden"
+          animate={revealed ? "show" : "hidden"}
+        >
+          <motion.div className="hero-eyebrow" variants={fadeUp}>
+            <T>{t("hero.eyebrow")}</T>
+          </motion.div>
+          <motion.h1 variants={fadeUp}>
+            <T block>{t("hero.name1")}</T>
+            <span className="accent"><T>{t("hero.italic")}</T></span>{" "}
+            <T>{t("hero.name2")}</T>
+          </motion.h1>
+          <motion.div className="hero-role" variants={fadeUp}>
+            <T>{t("hero.role")}</T>
+          </motion.div>
+          <motion.p className="hero-sub" variants={fadeUp}>
+            <T block>{t("hero.sub")}</T>
+          </motion.p>
+          <motion.div className="hero-cta-row" variants={fadeUp}>
+            <a href="#about" className="btn primary">
+              <T>{t("hero.cta1")}</T> <span className="arrow">→</span>
             </a>
             <a href="#contact" className="btn ghost">
-              {t("hero.cta2")} <span className="arrow">↗</span>
+              <T>{t("hero.cta2")}</T> <span className="arrow">↗</span>
             </a>
-          </div>
-          <div className="hero-meta">
+          </motion.div>
+          <motion.div className="hero-meta" variants={fadeUp}>
             <div className="status-pill">
               <span className="status-dot" />
-              {t("hero.status")}
+              <T>{t("hero.status")}</T>
             </div>
-          </div>
-        </div>
-        <div className="hero-portrait">
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="hero-portrait"
+          variants={portrait}
+          initial="hidden"
+          animate={revealed ? "show" : "hidden"}
+        >
           <video
             ref={videoRef}
             className="hero-memoji"
@@ -61,7 +80,7 @@ export default function Hero({ t, revealed }) {
             preload="auto"
             autoPlay
           />
-        </div>
+        </motion.div>
       </div></div>
     </section>
   );

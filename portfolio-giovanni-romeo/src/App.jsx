@@ -1,5 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { useI18n, useTheme, useScrollSpy, useReveal } from "./hooks.js";
+import { LangContext } from "./LangContext.js";
+import sections from "./assets/sections.json";
 
 import Navbar from "./components/Navbar.jsx";
 import Splash from "./components/Splash.jsx";
@@ -12,19 +14,16 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Marquee from "./components/Marquee.jsx";
 
-const SECTION_IDS = [
-  "work",
-  "about",
-  "skills",
-  "experience",
-  "projects",
-  "contact",
-];
+const ALL_SECTION_IDS = ["work", "about", "skills", "experience", "projects", "contact"];
+const SECTION_KEY_MAP = { work: "hero", about: "about", skills: "skills", experience: "experience", projects: "projects", contact: "contact" };
 
 export default function App() {
   const { lang, setLang, t } = useI18n();
   const { theme, setTheme } = useTheme();
-  const ids = useMemo(() => SECTION_IDS, []);
+  const ids = useMemo(
+    () => ALL_SECTION_IDS.filter((id) => sections[SECTION_KEY_MAP[id]]),
+    []
+  );
   const active = useScrollSpy(ids);
   useReveal();
 
@@ -43,7 +42,7 @@ export default function App() {
   }, [splashed]);
 
   return (
-    <>
+    <LangContext.Provider value={lang}>
       <div className="grain" aria-hidden="true" />
       <Splash
         onDone={() => {
@@ -51,7 +50,6 @@ export default function App() {
           setRevealed(true);
         }}
       />
-      {/* {splashed && <Splash onDone={() => setSplashed(false)} />} */}
       <Navbar
         t={t}
         lang={lang}
@@ -62,16 +60,15 @@ export default function App() {
         revealed={revealed}
       />
       <main id="page-content">
-        <Hero t={t} revealed={revealed} />
-        <Marquee />
-        <About t={t} />
-        <Skills t={t} />
-        <Experience t={t} />
-        <Projects t={t} />
-        <Marquee />
-        <Contact t={t} />
-        {/* <Footer t={t} /> */}
+        {sections.hero        && <Hero t={t} revealed={revealed} />}
+        {sections.marquee_after_hero && <Marquee />}
+        {sections.about       && <About t={t} />}
+        {sections.skills      && <Skills t={t} />}
+        {sections.experience  && <Experience t={t} />}
+        {sections.projects    && <Projects t={t} />}
+        {sections.marquee_after_projects && <Marquee />}
+        {sections.contact     && <Contact t={t} />}
       </main>
-    </>
+    </LangContext.Provider>
   );
 }

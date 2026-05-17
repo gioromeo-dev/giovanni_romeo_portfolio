@@ -8,14 +8,7 @@ export function useI18n() {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = (next) => {
-    const root = document.documentElement;
-    root.classList.add("lang-out");
-    setTimeout(() => {
-      setLangState(next);
-      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("lang-out")));
-    }, 220);
-  };
+  const setLang = (next) => setLangState(next);
 
   const t = (k) => (I18N[lang]?.[k]) ?? k;
   return { lang, setLang, t };

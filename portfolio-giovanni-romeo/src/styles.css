@@ -5,7 +5,7 @@
   --bg: #ffffff;
   --bg-invert: rgb(18, 18, 18);
   --bg-element: rgb(225, 223, 219);
-  --bg-elev: linear-gradient(160deg, rgb(255, 255, 255) 0%, rgb(180, 180, 180) 100%);;
+  --bg-elev: linear-gradient(160deg, rgb(255, 255, 255) 0%, rgb(180, 180, 180) 100%);
   /* --bg-elev: linear-gradient(160deg, rgb(252,251,249) 0%, rgb(238,236,232) 100%); */
   --bg-card: rgba(255,255,255,1);
   --line: rgba(212,208,203,1);
@@ -15,9 +15,13 @@
   --fg-dim: rgba(145,140,133,1);
   --fg-invert: rgba(245,243,240,1);
   --fg-invert-mute: rgba(180,178,174,1);
-  --accent: rgba(237, 255, 0,1);
-  --accent-secondary: rgba(0, 13, 255,1);
-  --accent-terziary: rgba(255, 77, 0,1);
+  --accent: #EEFF00;
+  --accent-2: #13FF00;
+  --accent-3: #00FFC7;
+  --accent-4: #005CFF;
+  --accent-5: #7E00FF;
+  --accent-6: #FF00A5;
+  --accent-7: #FF3500;
   --accent-ink: rgba(20,18,0,1);
   --good: rgba(64,157,72,1);
   --good-invert: rgba(93,212,112,1);
@@ -330,34 +334,6 @@ button {
   color: var(--page-fg);
 }
 
-/* ============= Lang transition ============= */
-/* Only text containers fade — backgrounds and images are untouched */
-.section-head,
-.hero-content,
-.about-bento .ab-bio,
-.about-bento .ab-stat,
-.skill-cats,
-.tl-list,
-.proj-body,
-.contact-body,
-.foot,
-.nav-links,
-.nav-tools {
-  transition: opacity 0.22s ease;
-}
-html.lang-out .section-head,
-html.lang-out .hero-content,
-html.lang-out .about-bento .ab-bio,
-html.lang-out .about-bento .ab-stat,
-html.lang-out .skill-cats,
-html.lang-out .tl-list,
-html.lang-out .proj-body,
-html.lang-out .contact-body,
-html.lang-out .foot,
-html.lang-out .nav-links,
-html.lang-out .nav-tools {
-  opacity: 0;
-}
 
 /* ============= Reveal animations ============= */
 .reveal {

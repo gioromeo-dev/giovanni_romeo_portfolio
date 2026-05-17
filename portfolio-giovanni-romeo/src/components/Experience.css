@@ -1,42 +1,176 @@
+/* ═══════════════════════════════════════════
+   EXPERIENCE — Timeline
+   ═══════════════════════════════════════════ */
+
 .tl-list {
   display: flex;
   flex-direction: column;
 }
 
-.tl-item {
+/* ── Company block: 2-col grid ── */
+.tl-company {
   display: grid;
-  grid-template-columns: 180px 1fr 140px;
-  gap: 32px;
-  padding: 36px 0;
-  border-top: 1px solid var(--line-soft);
-  align-items: start;
-  transition: padding-left 0.2s var(--ease-spring);
-  cursor: default;
+  grid-template-columns: 72px 1fr;
+  gap: 0 36px;
+  padding-bottom: 56px;
+  position: relative;
 }
-.tl-item:last-child {
-  border-bottom: 1px solid var(--line-soft);
-}
-.tl-item:hover { padding-left: 12px; }
-
-.tl-when {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-dim);
-  padding-top: 8px;
-  line-height: 1.6;
+.tl-company:last-child {
+  padding-bottom: 0;
 }
 
-.tl-body h3 {
+/*
+  Continuous vertical spine line.
+  Positioned at the horizontal centre of the left column (72px / 2 = 36px).
+  Extends from the top of the block through to the next company's dot.
+*/
+.tl-company::before {
+  content: '';
+  position: absolute;
+  left: 36px;
+  transform: translateX(-50%);
+  top: 24px;   /* start just below the main dot */
+  bottom: 0;
+  width: 1px;
+  background: var(--line-soft);
+  z-index: 0;
+}
+.tl-company:not(:last-child)::before {
+  bottom: -56px; /* bridge through the gap to the next company */
+}
+
+/* ── Row 1 / Left: main dot ── */
+.tl-main-spine {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--fg);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.28s var(--ease-spring);
+}
+.tl-dot-j1{
+  background: var(--accent);
+  border-color: var(--fg);
+  border-style: solid;
+}
+.tl-company:hover .tl-dot {
+  /* transform: scale(1.35); */
+}
+
+/* ── Row 1 / Right: company header (logo + name) ── */
+.tl-co-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 6px;    /* align vertically with main dot */
+  padding-bottom: 24px;
+}
+
+.tl-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: contain;
+  border: 1px solid var(--line-soft);
+  padding: 6px;
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+/* Fallback: single initial letter */
+.tl-logo-fb {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--fg);
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.tl-company:hover .tl-logo-fb {
+  /* border-color: var(--fg-dim);
+  background: var(--hover); */
+}
+
+.tl-co-head h3 {
   font-family: var(--display);
   font-weight: 500;
-  font-size: 28px;
-  letter-spacing: -0.02em;
+  font-size: 30px;
+  letter-spacing: -0.03em;
   line-height: 1;
-  margin-bottom: 6px;
 }
-.tl-body .role {
+
+/* ── Rows 2..N / Left: sub-dot + date below ── */
+.tl-pos-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centre dot + date under the spine axis */
+  padding-top: 2px;
+  padding-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sub-dot: small ring that sits on the line */
+.tl-rdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fg);
+  /* White outline separates dot from the spine line */
+  box-shadow: 0 0 0 3px var(--bg);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.22s var(--ease-spring), background 0.2s ease;
+}
+.tl-company:hover .tl-rdot {
+  transform: scale(1.3);
+  background: var(--fg);
+}
+
+/* Date — directly below the sub-dot */
+.tl-when {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  line-height: 1.6;
+  margin-top: 10px;
+  text-align: center;
+  word-break: break-word;
+  width: 100%;
+}
+
+/* ── Rows 2..N / Right: role content ── */
+.tl-rbody {
+  padding-bottom: 32px;
+  padding-top: 0;
+  min-width: 0;
+}
+
+/* Role badge */
+.role {
   font-family: var(--mono);
   font-size: 11px;
   color: var(--accent-ink);
@@ -46,15 +180,32 @@
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 16px;
+  line-height: 1.5;
+  margin-bottom: 6px;
 }
-.tl-body p {
+
+/* Location */
+.tl-loc {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Description */
+.tl-rbody p {
   color: var(--fg-mute);
   font-size: 15px;
   line-height: 1.65;
   max-width: 60ch;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
+
+/* Tags */
 .tl-tags {
   display: flex;
   flex-wrap: wrap;
@@ -70,28 +221,51 @@
   letter-spacing: 0.04em;
   transition: border-color 0.15s ease, color 0.15s ease;
 }
-.tl-item:hover .tl-tags span {
+.tl-company:hover .tl-tags span {
   border-color: color-mix(in oklch, var(--line), var(--fg) 20%);
   color: var(--fg-mute);
 }
 
-.tl-loc {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--fg-dim);
-  text-align: right;
-  padding-top: 8px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  line-height: 1.6;
+/* ═══════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════ */
+@media (max-width: 880px) {
+  .tl-company {
+    grid-template-columns: 56px 1fr;
+    gap: 0 24px;
+    padding-bottom: 44px;
+  }
+  .tl-company::before {
+    left: 28px;
+  }
+  .tl-company:not(:last-child)::before {
+    bottom: -44px;
+  }
+  .tl-co-head h3 {
+    font-size: 24px;
+  }
+  .tl-dot {
+    width: 12px;
+    height: 12px;
+  }
 }
 
-@media (max-width: 880px) {
-  .tl-item {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 28px 0;
+@media (max-width: 520px) {
+  .tl-company {
+    grid-template-columns: 44px 1fr;
+    gap: 0 16px;
+    padding-bottom: 40px;
   }
-  .tl-item:hover { padding-left: 0; }
-  .tl-loc { text-align: left; }
+  .tl-company::before {
+    left: 22px;
+  }
+  .tl-company:not(:last-child)::before {
+    bottom: -40px;
+  }
+  .tl-co-head h3 {
+    font-size: 20px;
+  }
+  .tl-when {
+    font-size: 8px;
+  }
 }

@@ -1,3 +1,19 @@
+/* ---- Section header override ---- */
+#projects .section-head {
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+}
+#projects .section-head .ix {
+  margin-bottom: 16px;
+}
+#projects .section-head h2 {
+  font-size: clamp(36px, 6vw, 72px);
+}
+#projects .section-head .head-meta {
+  margin-top: 14px;
+  font-size: 15px;
+}
+
 /* ---- Selector bar (between section card and carousel) ---- */
 .proj-selector-bar {
   display: flex;
@@ -70,18 +86,39 @@
   background: var(--accent-hover);
 }
 
-/* ---- Carousel strip — bleeds edge-to-edge inside the section card ---- */
+/* ---- Carousel strip — full VW, JS sets margin-left + width ---- */
+#projects {
+  overflow: visible;
+}
 .proj-strip {
   position: relative;
   background: var(--page-bg);
-  margin-left: -56px;
-  margin-right: -56px;
   margin-bottom: -80px;
   padding: 14px 0 28px;
   overflow: hidden;
 }
 
-/* ---- Track ---- */
+/* ---- Edge fade overlays ---- */
+.proj-strip::before,
+.proj-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 2;
+  pointer-events: none;
+}
+.proj-strip::before {
+  left: 0px;
+  background: linear-gradient(to right, var(--page-bg) 0%, transparent 100%);
+}
+.proj-strip::after {
+  right: 0;
+  background: linear-gradient(to left, var(--page-bg) 0%, transparent 100%);
+}
+
+/* ---- Track — JS sets padding-left + padding-right ---- */
 .proj-track {
   display: flex;
   gap: 16px;
@@ -90,7 +127,8 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 8px 56px 12px 56px;
+  padding-top: 8px;
+  padding-bottom: 12px;
 }
 .proj-track::-webkit-scrollbar { display: none; }
 
@@ -204,13 +242,8 @@
 /* ---- Mobile ---- */
 @media (max-width: 720px) {
   .proj-strip {
-    margin-left: -20px;
-    margin-right: -20px;
     margin-bottom: -52px;
     padding: 14px 0 20px;
-  }
-  .proj-track {
-    padding: 8px 16px 12px 20px;
   }
   .proj-card { flex: 0 0 82%; }
 }

@@ -1,19 +1,58 @@
 import { useRef, useState, useEffect, useCallback } from "react";
+import { motion } from "motion/react";
+import { fadeUp, stagger } from "../animations.js";
+import { T } from "./T.jsx";
 import { PROJECTS } from "../data.js";
 import "./Projects.css";
 
+const headStagger = stagger(0.08, 0.05);
+
 export default function Projects({ t }) {
+  const sectionRef = useRef(null);
+  const stripRef = useRef(null);
   const trackRef = useRef(null);
   const activeIdxRef = useRef(0);
+  const paddingLeftRef = useRef(56);
   const [activeIdx, setActiveIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
+
+  const updateLayout = useCallback(() => {
+    const section = sectionRef.current;
+    const strip = stripRef.current;
+    const track = trackRef.current;
+    if (!section || !strip || !track) return;
+
+    const sectionRect = section.getBoundingClientRect();
+    const sectionPaddingLeft = parseFloat(getComputedStyle(section).paddingLeft);
+    // anchor = distance from viewport left to section content left edge
+    const anchor = sectionRect.left + sectionPaddingLeft;
+
+    const firstCard = track.querySelector(".proj-card");
+    const cardWidth = firstCard ? firstCard.offsetWidth : 360;
+    // paddingRight: last card stops when its left edge reaches anchor
+    const paddingRight = Math.max(16, window.innerWidth - anchor - cardWidth);
+
+    paddingLeftRef.current = anchor;
+
+    strip.style.marginLeft = `${-(sectionPaddingLeft + sectionRect.left)}px`;
+    strip.style.width = "100vw";
+    track.style.paddingLeft = `${anchor}px`;
+    track.style.paddingRight = `${paddingRight}px`;
+    track.style.scrollPaddingLeft = `${anchor}px`;
+  }, []);
+
+  useEffect(() => {
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+    return () => window.removeEventListener("resize", updateLayout);
+  }, [updateLayout]);
 
   const scrollToIdx = useCallback((idx) => {
     const el = trackRef.current;
     if (!el) return;
     const cards = el.querySelectorAll(".proj-card");
     if (!cards[idx]) return;
-    el.scrollTo({ left: cards[idx].offsetLeft, behavior: "smooth" });
+    el.scrollTo({ left: cards[idx].offsetLeft - paddingLeftRef.current, behavior: "smooth" });
     activeIdxRef.current = idx;
     setActiveIdx(idx);
   }, []);
@@ -36,7 +75,7 @@ export default function Projects({ t }) {
       const cards = el.querySelectorAll(".proj-card");
       let best = 0, bestDist = Infinity;
       cards.forEach((card, i) => {
-        const dist = Math.abs(card.offsetLeft - el.scrollLeft);
+        const dist = Math.abs(card.offsetLeft - paddingLeftRef.current - el.scrollLeft);
         if (dist < bestDist) { bestDist = dist; best = i; }
       });
       setActiveIdx(best);
@@ -48,13 +87,19 @@ export default function Projects({ t }) {
 
   return (
     <>
-      <section id="projects" className="section shell reveal">
-        <div className="section-head">
-          <div className="ix">{t("proj.ix")}</div>
-          <h2>{t("proj.head")}</h2>
-          <div className="head-meta">{t("proj.head.meta")}</div>
-        </div>
-        <div className="proj-strip">
+      <section id="projects" ref={sectionRef} className="section shell reveal">
+        <motion.div
+          className="section-head"
+          variants={headStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div className="ix" variants={fadeUp}><T delay={0}>{t("proj.ix")}</T></motion.div>
+          <motion.h2 variants={fadeUp}><T block delay={0.05}>{t("proj.head")}</T></motion.h2>
+          <motion.div className="head-meta" variants={fadeUp}><T block delay={0.1}>{t("proj.head.meta")}</T></motion.div>
+        </motion.div>
+        <div className="proj-strip" ref={stripRef}>
           <div className="proj-track" ref={trackRef}>
             {PROJECTS.map((p, i) => (
               <a className="proj-card" key={p.key} href="#" onClick={(e) => e.preventDefault()}>
@@ -62,10 +107,10 @@ export default function Projects({ t }) {
                   <span className="ph-num">{`0${i + 1}`}</span>
                 </div>
                 <div className="proj-body">
-                  <span className="pill">{t(`proj.${p.key}.tag`)}</span>
-                  <h3>{t(`proj.${p.key}.title`)}</h3>
-                  <p className="desc">{t(`proj.${p.key}.desc`)}</p>
-                  <span className="explore">{t("proj.viewcase")} →</span>
+                  <span className="pill"><T>{t(`proj.${p.key}.tag`)}</T></span>
+                  <h3><T>{t(`proj.${p.key}.title`)}</T></h3>
+                  <p className="desc"><T block>{t(`proj.${p.key}.desc`)}</T></p>
+                  <span className="explore"><T>{t("proj.viewcase")}</T> →</span>
                 </div>
               </a>
             ))}
