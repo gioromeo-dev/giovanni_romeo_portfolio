@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { fadeUp, stagger } from "../animations.js";
+import { fadeUp, stagger, viewport } from "../animations.js";
 import { T } from "./T.jsx";
 import { CONTACT_LINKS } from "../data.js";
 import { IconMail, IconGithub, IconLinkedin, IconReadcv } from "./Icons.jsx";
@@ -45,7 +45,7 @@ export default function Contact({ t }) {
         variants={bodyStagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <motion.div variants={fadeUp}>
           <div className="contact-claim">
@@ -82,7 +82,7 @@ export default function Contact({ t }) {
             variants={fieldStagger}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={viewport}
           >
             <motion.div className="cf-field" variants={fadeUp}>
               <label htmlFor="cf-name"><T>{t("contact.form.name")}</T></label>

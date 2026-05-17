@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { fadeUp, scaleIn, stagger } from "../animations.js";
+import { fadeUp, scaleIn, stagger, viewport } from "../animations.js";
 import { T } from "./T.jsx";
 import "./About.css";
 
@@ -17,7 +17,7 @@ export default function About({ t }) {
         variants={bentoStagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <motion.div className="ab-bio" variants={fadeUp}>
           <p><T block>{t("about.p1")}</T></p>

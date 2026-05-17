@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { fadeUp, stagger } from "../animations.js";
+import { fadeUp, stagger, viewport } from "../animations.js";
 import { T } from "./T.jsx";
 import { EXP_ITEMS } from "../data.js";
 import "./Experience.css";
@@ -19,7 +19,7 @@ export default function Experience({ t }) {
         variants={listStagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={viewport}
       >
         {EXP_ITEMS.map((company) => (
           <motion.div className="tl-company" key={company.key} variants={fadeUp}>

@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
-import { fadeUp, stagger } from "../animations.js";
+import { fadeUp, stagger, viewport } from "../animations.js";
 import { T } from "./T.jsx";
 import { PROJECTS } from "../data.js";
 import "./Projects.css";
@@ -93,7 +93,7 @@ export default function Projects({ t }) {
           variants={headStagger}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewport}
         >
           <motion.div className="ix" variants={fadeUp}><T delay={0}>{t("proj.ix")}</T></motion.div>
           <motion.h2 variants={fadeUp}><T block delay={0.05}>{t("proj.head")}</T></motion.h2>

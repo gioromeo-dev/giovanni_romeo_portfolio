@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { fadeUp, tagPop, stagger } from "../animations.js";
+import { fadeUp, tagPop, stagger, viewport } from "../animations.js";
 import { T } from "./T.jsx";
 import { SKILL_CATS } from "../data.js";
 import "./Skills.css";
@@ -19,7 +19,7 @@ export default function Skills({ t }) {
         variants={catsStagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         {SKILL_CATS.map((c) => (
           <motion.div className="skill-cat" key={c.key} variants={fadeUp}>
@@ -32,7 +32,7 @@ export default function Skills({ t }) {
               variants={tagsStagger}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={viewport}
             >
               {c.tags.map((tag) => (
                 <motion.span className="skill-tag" key={tag} variants={tagPop}>{tag}</motion.span>
