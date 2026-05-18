@@ -341,7 +341,7 @@
     "about.numfact3": "2.4k",
 
     "skills.title": "Skills",
-    "skills.ix": "// 02 — Toolkit",
+    "skills.ix": "// 02 — Skills",
     "skills.head": "What I work with daily.",
     "skills.cat1": "Power Platform",
     "skills.cat1.meta": "Apps, automation & data",
@@ -443,8 +443,8 @@
     "about.numfact3": "2.4k",
 
     "skills.title": "Competenze",
-    "skills.ix": "// 02 — Strumenti",
-    "skills.head": "Strumenti di tutti i giorni.",
+    "skills.ix": "// 02 — Competenze",
+    "skills.head": "Con cosa lavoro quotidianamente.",
     "skills.cat1": "Power Platform",
     "skills.cat1.meta": "App, automazione & dati",
     "skills.cat2": "Azure",

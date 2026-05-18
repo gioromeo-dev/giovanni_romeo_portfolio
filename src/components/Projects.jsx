@@ -52,7 +52,28 @@ export default function Projects({ t }) {
     if (!el) return;
     const cards = el.querySelectorAll(".proj-card");
     if (!cards[idx]) return;
-    el.scrollTo({ left: cards[idx].offsetLeft - paddingLeftRef.current, behavior: "smooth" });
+
+    const target = cards[idx].offsetLeft - paddingLeftRef.current;
+    const start = el.scrollLeft;
+    const dist = target - start;
+    const duration = 1000;
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+    let startTime = null;
+
+    el.style.scrollSnapType = "none";
+
+    const step = (ts) => {
+      if (!startTime) startTime = ts;
+      const t = Math.min((ts - startTime) / duration, 1);
+      el.scrollLeft = start + dist * ease(t);
+      if (t < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.style.scrollSnapType = "";
+      }
+    };
+    requestAnimationFrame(step);
+
     activeIdxRef.current = idx;
     setActiveIdx(idx);
   }, []);
@@ -67,6 +88,17 @@ export default function Projects({ t }) {
     const id = setInterval(advance, 3200);
     return () => clearInterval(id);
   }, [playing, advance]);
+
+  useEffect(() => {
+    const el = stripRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setPlaying(entry.isIntersecting),
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const el = trackRef.current;

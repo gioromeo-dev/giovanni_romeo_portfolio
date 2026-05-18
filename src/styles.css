@@ -96,6 +96,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-h) + var(--card-gap));
+  interpolate-size: allow-keywords;
+}
+@supports (scrollbar-gutter: stable) {
+  html { scrollbar-gutter: stable; }
 }
 body {
   font-family: var(--body);
@@ -172,6 +176,7 @@ button {
   box-sizing: border-box;
   box-shadow: var(--card-shadow);
   overflow: hidden;
+  will-change: scroll-position;
 }
 
 /* Subtle card surface texture */
