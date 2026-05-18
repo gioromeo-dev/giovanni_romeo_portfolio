@@ -187,9 +187,37 @@
   .hero-memoji   { max-width: 240px; }
 }
 @media (max-width: 720px) {
+  .hero h1 {
+    font-size: clamp(36px, 11vw, 56px);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow {
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    font-size: 15px;
+  }
+  .hero-cta-row {
+    margin-top: 28px;
+    gap: 8px;
+  }
   .hero-meta {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 12px;
+    margin-top: 36px;
+    padding-top: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-memoji {
+    max-width: 160px;
+  }
+  .hero-grid {
+    gap: 20px;
+  }
+  .hero-cta-row .btn {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }

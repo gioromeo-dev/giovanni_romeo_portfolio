@@ -26,21 +26,19 @@ export default function Projects({ t }) {
 
     const sectionRect = section.getBoundingClientRect();
     const sectionPaddingLeft = parseFloat(getComputedStyle(section).paddingLeft);
-    // anchor = distance from viewport left to section content left edge
-    const anchor = sectionRect.left + sectionPaddingLeft;
+
+    strip.style.width = "100vw";
+    strip.style.marginLeft = `${-(sectionPaddingLeft + sectionRect.left)}px`;
 
     const firstCard = track.querySelector(".proj-card");
     const cardWidth = firstCard ? firstCard.offsetWidth : 360;
-    // paddingRight: last card stops when its left edge reaches anchor
-    const paddingRight = Math.max(16, window.innerWidth - anchor - cardWidth);
 
-    paddingLeftRef.current = anchor;
-
-    strip.style.marginLeft = `${-(sectionPaddingLeft + sectionRect.left)}px`;
-    strip.style.width = "100vw";
-    track.style.paddingLeft = `${anchor}px`;
-    track.style.paddingRight = `${paddingRight}px`;
-    track.style.scrollPaddingLeft = `${anchor}px`;
+    // Center every card symmetrically in the viewport (mobile & desktop)
+    const sidePadding = Math.max(16, (window.innerWidth - cardWidth) / 2);
+    paddingLeftRef.current = sidePadding;
+    track.style.paddingLeft = `${sidePadding}px`;
+    track.style.paddingRight = `${sidePadding}px`;
+    track.style.scrollPaddingLeft = `${sidePadding}px`;
   }, []);
 
   useEffect(() => {
@@ -126,35 +124,35 @@ export default function Projects({ t }) {
             ))}
           </div>
         </div>
-      </section>
-      <div className="proj-selector-bar">
-        <div className="proj-dots-pill">
-          {PROJECTS.map((_, i) => (
-            <button
-              key={i}
-              className={`proj-dot${activeIdx === i ? " active" : ""}`}
-              onClick={() => scrollToIdx(i)}
-              aria-label={`Project ${i + 1}`}
-            />
-          ))}
+        <div className="proj-selector-bar">
+          <div className="proj-dots-pill">
+            {PROJECTS.map((_, i) => (
+              <button
+                key={i}
+                className={`proj-dot${activeIdx === i ? " active" : ""}`}
+                onClick={() => scrollToIdx(i)}
+                aria-label={`Project ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button
+            className="proj-play-btn"
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? "Pause" : "Play"}
+          >
+            {playing ? (
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="5" y="3" width="5" height="18" rx="1.5" />
+                <rect x="14" y="3" width="5" height="18" rx="1.5" />
+              </svg>
+            ) : (
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 3.5l14 8.5-14 8.5V3.5z" />
+              </svg>
+            )}
+          </button>
         </div>
-        <button
-          className="proj-play-btn"
-          onClick={() => setPlaying((p) => !p)}
-          aria-label={playing ? "Pause" : "Play"}
-        >
-          {playing ? (
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="5" y="3" width="5" height="18" rx="1.5" />
-              <rect x="14" y="3" width="5" height="18" rx="1.5" />
-            </svg>
-          ) : (
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 3.5l14 8.5-14 8.5V3.5z" />
-            </svg>
-          )}
-        </button>
-      </div>
+      </section>
     </>
   );
 }

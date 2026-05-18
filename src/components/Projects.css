@@ -1,17 +1,36 @@
-/* ---- Section header override ---- */
+/* ---- Strip the card background from the section ---- */
+#projects {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding-bottom: 32px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+}
+#projects::before { display: none !important; }
+
+/* ---- Section header override — text inverted for dark page bg ---- */
 #projects .section-head {
   margin-bottom: 32px;
   padding-bottom: 20px;
+  border-bottom-color: rgba(255,255,255,0.08);
 }
 #projects .section-head .ix {
   margin-bottom: 16px;
 }
 #projects .section-head h2 {
   font-size: clamp(36px, 6vw, 72px);
+  color: var(--fg-invert);
+}
+#projects .section-head h2 em,
+#projects .section-head h2 .accent {
+  color: var(--fg-invert-mute);
 }
 #projects .section-head .head-meta {
   margin-top: 14px;
   font-size: 15px;
+  color: var(--fg-invert-mute);
 }
 
 /* ---- Selector bar (between section card and carousel) ---- */
@@ -93,9 +112,11 @@
 .proj-strip {
   position: relative;
   background: var(--page-bg);
-  margin-bottom: -80px;
-  padding: 14px 0 28px;
+  flex: 1;
+  padding: 14px 0 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---- Edge fade overlays ---- */
@@ -129,12 +150,15 @@
   -ms-overflow-style: none;
   padding-top: 8px;
   padding-bottom: 12px;
+  flex: 1;
+  align-items: stretch;
 }
 .proj-track::-webkit-scrollbar { display: none; }
 
 /* ---- Cards ---- */
 .proj-card {
-  flex: 0 0 360px;
+  /* 80% of section content width: section = min(100vw-20px, 1320px); padding = 56px×2 = 112px */
+  flex: 0 0 calc((min(100vw - 20px, 1320px) - 112px) * 0.8);
   scroll-snap-align: start;
   background: var(--bg-card);
   border: 1px solid var(--line);
@@ -156,7 +180,7 @@
 
 /* Richer cover gradients */
 .proj-cover {
-  aspect-ratio: 16/10;
+  flex: 1;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, rgb(235,232,228) 0%, rgb(218,215,210) 100%);
@@ -252,8 +276,18 @@
 /* ---- Mobile ---- */
 @media (max-width: 720px) {
   .proj-strip {
-    margin-bottom: -52px;
-    padding: 14px 0 20px;
+    padding: 14px 0 0;
   }
-  .proj-card { flex: 0 0 82%; }
+  /* 80% of section content width: (100vw - margin×2 - padding×2) × 0.8 */
+  .proj-card { flex: 0 0 calc((100vw - 60px) * 0.8); }
+  .proj-selector-bar {
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+}
+@media (max-width: 480px) {
+  .proj-card { flex: 0 0 calc((100vw - 56px) * 0.8); }
+  #projects .section-head h2 {
+    font-size: clamp(32px, 10vw, 52px);
+  }
 }

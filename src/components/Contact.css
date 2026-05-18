@@ -197,6 +197,33 @@
   }
 }
 
+@media (max-width: 600px) {
+  .contact-list a {
+    grid-template-columns: 24px 52px 1fr auto;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+  .contact-list a:hover {
+    padding-left: 18px;
+  }
+  .contact-list .lbl {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+  }
+  .contact-list .val {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .contact-claim {
+    font-size: clamp(32px, 9vw, 48px);
+    margin-bottom: 28px;
+  }
+}
+
+
 /* ============= Dark contact section ============= */
 #contact.section {
   background: var(--bg-invert);

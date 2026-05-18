@@ -262,10 +262,24 @@
   .tl-company:not(:last-child)::before {
     bottom: -40px;
   }
+  .tl-co-head {
+    gap: 10px;
+  }
   .tl-co-head h3 {
     font-size: 20px;
   }
+  .tl-logo {
+    width: 44px;
+    height: 44px;
+  }
   .tl-when {
     font-size: 8px;
+  }
+  .tl-rbody p {
+    font-size: 14px;
+  }
+  .role {
+    font-size: 10px;
+    padding: 2px 7px;
   }
 }

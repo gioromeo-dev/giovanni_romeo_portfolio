@@ -22,12 +22,12 @@
     "it": true
   },
   "features": {
-    "availabilityBadge": true,
-    "contactForm":       true
+    "availabilityBadge": false,
+    "contactForm":       false
   },
   "splash": {
     "enabled":       true,
-    "showOn":        "session",
+    "showOn":        "always",
     "video":         "/videos/splash/splash_4.mp4",
     "fallbackMs":    6000,
     "fadeDurationMs": 700
