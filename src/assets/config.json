@@ -1,4 +1,7 @@
 {
+  "_note": "Keys starting with underscore are documentation only — the app ignores them.",
+
+  "_note_sectionAccents": "Per-section accent colour palette. Swapped in automatically as the user scrolls into each section. Each entry needs: accent (main colour), accentHover (lighter variant for hover states), accentInk (text colour on top of accent — use dark for bright accents, light for dark ones).",
   "sectionAccents": {
     "work":       { "accent": "#EEFF00", "accentHover": "#FFF850", "accentInk": "#13110A" },
     "about":      { "accent": "#FF3500", "accentHover": "#FF5C30", "accentInk": "#1A0800" },
@@ -7,6 +10,8 @@
     "projects":   { "accent": "#7E00FF", "accentHover": "#9B2FFF", "accentInk": "#F0EEEA" },
     "contact":    { "accent": "#FF00A5", "accentHover": "#FF28B8", "accentInk": "#1A000E" }
   },
+
+  "_note_sections": "Toggle each page section on (true) or off (false). Disabled sections are completely removed from the DOM — no empty space is left behind.",
   "sections": {
     "hero":                   true,
     "marquee_after_hero":     true,
@@ -17,19 +22,26 @@
     "marquee_after_projects": true,
     "contact":                true
   },
+
+  "_note_languages": "Enable the languages available in the UI. At least one must be true. If only one is enabled the language switcher is hidden automatically. Supported values: 'en' (English), 'it' (Italian).",
   "languages": {
     "en": true,
     "it": true
   },
+
+  "_note_features": "Individual feature flags. Set to true to enable, false to disable. availabilityBadge: shows an 'open to work' pill in the Hero section. contactForm: shows the contact form inside the Contact section (requires a valid Formspree endpoint in Contact.jsx).",
   "features": {
     "availabilityBadge": false,
     "contactForm":       false
   },
+
+  "_note_splash": "Intro splash screen shown before the portfolio loads. enabled: true | false. showOn: 'always' (every visit), 'session' (once per browser session), 'once' (once ever, stored in localStorage). video: path to the splash video inside /public. fallbackMs: milliseconds before the splash is dismissed automatically if the video hasn't ended (safety net). fadeDurationMs: duration of the fade-out transition in milliseconds.",
   "splash": {
-    "enabled":       true,
-    "showOn":        "always",
-    "video":         "/videos/splash/splash_4.mp4",
-    "fallbackMs":    6000,
+    "enabled":        true,
+    "showOn":         "always",
+    "_note_showOn":   "Options: 'always' | 'session' | 'once'",
+    "video":          "/videos/splash/splash_4.mp4",
+    "fallbackMs":     6000,
     "fadeDurationMs": 700
   }
 }
