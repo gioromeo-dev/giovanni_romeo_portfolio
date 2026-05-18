@@ -1,14 +1,36 @@
+/* ---- Strip card background — match Projects treatment ---- */
+#skills {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+#skills::before { display: none !important; }
+
+/* ---- Section header — inverted text for dark page bg ---- */
+#skills .section-head {
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+#skills .section-head h2 { color: var(--fg-invert); }
+#skills .section-head h2 em,
+#skills .section-head h2 .accent { color: var(--fg-invert-mute); }
+#skills .section-head .ix { color: var(--accent-ink); }
+#skills .section-head .head-meta { color: var(--fg-invert-mute); }
+
+/* ---- skill-cats: unchanged (keep original card styles) ---- */
 .skill-cats {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--line);
+  /* border: 1px solid var(--line); */
   border-radius: 16px;
   overflow: hidden;
+  gap: var(--card-gap);
 }
 
 .skill-cat {
   display: grid;
+  background: var(--bg-elev);
   grid-template-columns: 240px 1fr;
+  border-radius: 16px;
   gap: 32px;
   padding: 28px 32px;
   border-bottom: 1px solid var(--line);
@@ -17,7 +39,7 @@
 }
 .skill-cat:last-child { border-bottom: none; }
 .skill-cat:hover {
-  background: var(--hover);
+  /* background: var(--hover); */
   padding-left: 35px;
 }
 

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useLang } from "../LangContext.js";
+import { useLang } from "@/context/LangContext.js";
 
 export function T({ children, block = false, delay = 0 }) {
   const lang = useLang();

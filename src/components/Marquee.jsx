@@ -1,4 +1,4 @@
-import { MARQUEE_ITEMS } from "../data.js";
+import { MARQUEE_ITEMS } from "@/data";
 import "./Marquee.css";
 
 export default function Marquee() {

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { fadeUp, tagPop, stagger, viewport } from "../animations.js";
+import { fadeUp, tagPop, stagger, viewport } from "@/lib/animations.js";
 import { T } from "./T.jsx";
-import { SKILL_CATS } from "../data.js";
+import { SKILL_CATS } from "@/data";
 import "./Skills.css";
 
 const catsStagger = stagger(0.1, 0.05);

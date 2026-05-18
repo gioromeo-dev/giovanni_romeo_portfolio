@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { fadeUp, stagger, viewport } from "../animations.js";
+import { fadeUp, stagger, viewport } from "@/lib/animations.js";
 import { T } from "./T.jsx";
-import { CONTACT_LINKS } from "../data.js";
+import { CONTACT_LINKS } from "@/data";
 import { IconMail, IconGithub, IconLinkedin, IconReadcv } from "./Icons.jsx";
 import "./Contact.css";
 
@@ -56,23 +56,46 @@ export default function Contact({ t, showForm }) {
             </a>
             <T>{t("contact.claim4")}</T>
           </div>
-          <div className="contact-list">
-            {CONTACT_LINKS.map((l) => {
-              const Icon = SOCIAL_ICONS[l.icon];
-              return (
-                <a key={l.key} href={l.href}
-                  target={l.href.startsWith("mailto:") ? "_self" : "_blank"}
-                  rel="noreferrer"
-                >
-                  <span className="cl-icon">{Icon && <Icon />}</span>
-                  <span className="lbl"><T>{t(`contact.${l.key}`)}</T></span>
-                  <span className="val">{l.val}</span>
-                  <span className="arr">↗</span>
-                </a>
-              );
-            })}
-          </div>
+          {showForm && (
+            <div className="contact-list">
+              {CONTACT_LINKS.map((l) => {
+                const Icon = SOCIAL_ICONS[l.icon];
+                return (
+                  <a key={l.key} href={l.href}
+                    target={l.href.startsWith("mailto:") ? "_self" : "_blank"}
+                    rel="noreferrer"
+                  >
+                    <span className="cl-icon">{Icon && <Icon />}</span>
+                    <span className="lbl"><T>{t(`contact.${l.key}`)}</T></span>
+                    <span className="val">{l.val}</span>
+                    <span className="arr">↗</span>
+                  </a>
+                );
+              })}
+            </div>
+          )}
         </motion.div>
+
+        {!showForm && (
+          <motion.div variants={fadeUp}>
+            <div className="contact-list">
+              {CONTACT_LINKS.map((l) => {
+                const Icon = SOCIAL_ICONS[l.icon];
+                return (
+                  <a key={l.key} href={l.href}
+                    target={l.href.startsWith("mailto:") ? "_self" : "_blank"}
+                    rel="noreferrer"
+                  >
+                    <span className="cl-icon">{Icon && <Icon />}</span>
+                    <span className="lbl"><T>{t(`contact.${l.key}`)}</T></span>
+                    <span className="val">{l.val}</span>
+                    <span className="arr">↗</span>
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
 
         {showForm && (
           <motion.div className="contact-form-box" variants={fadeUp}>

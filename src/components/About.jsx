@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { fadeUp, scaleIn, stagger, viewport } from "../animations.js";
+import { fadeUp, scaleIn, stagger, viewport } from "@/lib/animations.js";
 import { T } from "./T.jsx";
 import "./About.css";
 

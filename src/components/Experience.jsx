@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { fadeUp, stagger, viewport } from "../animations.js";
+import { fadeUp, stagger, viewport } from "@/lib/animations.js";
 import { T } from "./T.jsx";
-import { EXP_ITEMS } from "../data.js";
+import { EXP_ITEMS } from "@/data";
 import "./Experience.css";
 
 const listStagger = stagger(0.12, 0.05);

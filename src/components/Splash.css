@@ -20,3 +20,16 @@
   max-height: 100vh;
   object-fit: contain;
 }
+
+/* ---- Mobile ---- */
+@media (max-width: 720px) {
+  .splash-video {
+    transform: scale(1);
+  }
+}
+@media (max-width: 480px) {
+    .splash-video {
+
+    transform: scale(2);
+  }
+}

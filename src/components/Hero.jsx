@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { fadeUp, scaleIn, stagger } from "../animations.js";
+import { fadeUp, scaleIn, stagger } from "@/lib/animations.js";
 import { T } from "./T.jsx";
 import "./Hero.css";
 

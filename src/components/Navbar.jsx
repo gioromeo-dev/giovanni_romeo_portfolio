@@ -98,13 +98,13 @@ export default function Navbar({ t, lang, setLang, theme, setTheme, active, reve
                   href={`#${l.id}`}
                   className={active === l.id ? "active" : ""}
                   onClick={close}
-                  initial={{ opacity: 0, x: -16 }}
+                  initial={{ opacity: 0, x: 16 }}
                   animate={{
                     opacity: 1, x: 0,
                     transition: { ...ITEM_SPRING, delay: enterDelay(i) },
                   }}
                   exit={{
-                    opacity: 0, x: -16,
+                    opacity: 0, x: 16,
                     transition: { duration: 0.18, ease: "easeIn", delay: exitDelay(i, n) },
                   }}
                 >
@@ -122,13 +122,13 @@ export default function Navbar({ t, lang, setLang, theme, setTheme, active, reve
                     setLang(next);
                     close();
                   }}
-                  initial={{ opacity: 0, x: -16 }}
+                  initial={{ opacity: 0, x: 16 }}
                   animate={{
                     opacity: 1, x: 0,
                     transition: { ...ITEM_SPRING, delay: enterDelay(links.length) },
                   }}
                   exit={{
-                    opacity: 0, x: -16,
+                    opacity: 0, x: 16,
                     transition: { duration: 0.18, ease: "easeIn", delay: exitDelay(0, n) },
                   }}
                 >

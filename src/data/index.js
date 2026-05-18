@@ -1,4 +1,4 @@
-import content from "./assets/content.json";
+import content from "@/assets/content.json";
 
 export const MARQUEE_ITEMS = content.data.marquee;
 export const SKILL_CATS    = content.data.skills;

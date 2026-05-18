@@ -1,4 +1,4 @@
-import content from "./assets/content.json";
+import content from "@/assets/content.json";
 
 export const I18N = {
   en: content.en,

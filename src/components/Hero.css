@@ -24,6 +24,8 @@
   align-items: center;
   justify-content: center;
   order: 2;
+  opacity: 0;
+  will-change: opacity, transform;
 }
 .hero-content {
   display: flex;

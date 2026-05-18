@@ -6,7 +6,6 @@
   padding-bottom: 32px !important;
   display: flex;
   flex-direction: column;
-  height: 100svh;
 }
 #projects::before { display: none !important; }
 
@@ -279,7 +278,7 @@
     padding: 14px 0 0;
   }
   /* 80% of section content width: (100vw - margin×2 - padding×2) × 0.8 */
-  .proj-card { flex: 0 0 calc((100vw - 60px) * 0.8); }
+  .proj-card { flex: 0 0 calc((100vw - 60px) * 0.8); min-height: 480px; }
   .proj-selector-bar {
     margin-top: 8px;
     margin-bottom: 4px;

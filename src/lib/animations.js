@@ -1,4 +1,3 @@
-// Spring transitions — fluid, physics-based
 const spring       = { type: "spring", stiffness: 180, damping: 24, mass: 0.8 };
 const springFast   = { type: "spring", stiffness: 300, damping: 28 };
 const springSnappy = { type: "spring", stiffness: 380, damping: 30 };
@@ -33,5 +32,4 @@ export const stagger = (delay = 0.08, children = 0.06) => ({
   show:   { transition: { staggerChildren: delay, delayChildren: children } },
 });
 
-// Shared viewport — triggers only when element is well inside the screen
 export const viewport = { once: true, amount: 0.25, margin: "0px 0px -60px 0px" };

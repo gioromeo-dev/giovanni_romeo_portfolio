@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { I18N } from "./i18n.js";
-import config from "./assets/config.json";
+import { I18N } from "@/lib/i18n.js";
+import config from "@/assets/config.json";
 
 const enabledLangs = Object.entries(config.languages)
   .filter(([, on]) => on)

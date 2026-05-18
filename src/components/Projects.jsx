@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
-import { fadeUp, stagger, viewport } from "../animations.js";
+import { fadeUp, stagger, viewport } from "@/lib/animations.js";
 import { T } from "./T.jsx";
-import { useLang } from "../LangContext.js";
-import { PROJECTS } from "../data.js";
+import { useLang } from "@/context/LangContext.js";
+import { PROJECTS } from "@/data";
 import "./Projects.css";
 
 const headStagger = stagger(0.08, 0.05);

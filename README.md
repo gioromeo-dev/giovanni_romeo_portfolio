@@ -1,61 +1,102 @@
 # Giovanni Romeo — Portfolio
 
-## English
+Personal portfolio built with **Vite + React**. Bilingual (EN/IT), dark/light theme, scroll animations, fully responsive.
 
-Personal portfolio website for Giovanni Romeo, built with Vite + React. Features a bilingual interface (English / Italian), dark/light theme support, scroll animations, and a clean modern design.
+---
 
-### Features
-- Bilingual UI: English and Italian, switchable at runtime
-- Dark / Light theme toggle
-- Smooth scroll-triggered animations (Motion library)
-- Sections: hero, about, projects, skills, contact
-- Fully responsive layout
-- Video and image assets for a rich visual experience
+## Tech Stack
 
-### Tech Stack
-- React 19 + Vite 6
-- Motion (animations)
-- CSS (custom, no UI framework)
-- i18n via custom context (`LangContext`)
+| Layer | Tool |
+|---|---|
+| Framework | React 19 + Vite 6 |
+| Animations | Motion 12 |
+| Styling | Plain CSS (no UI framework) |
+| i18n | Custom context + JSON |
+| Path aliases | `@/` → `src/` |
 
-### How to run
-```bash
-cd portfolio-giovanni-romeo
-npm install
-npm run dev        # development server
-npm run build      # production build
-npm run preview    # preview production build
+---
+
+## Project Structure
+
+```
+src/
+├── main.jsx
+├── App.jsx
+├── styles.css
+│
+├── components/        # UI sections & layout
+│   ├── Hero.jsx / .css
+│   ├── About.jsx / .css
+│   ├── Skills.jsx / .css
+│   ├── Experience.jsx / .css
+│   ├── Projects.jsx / .css
+│   ├── Contact.jsx / .css
+│   ├── Navbar.jsx / .css
+│   ├── Marquee.jsx / .css
+│   ├── Splash.jsx / .css
+│   ├── Footer.jsx / .css
+│   ├── Icons.jsx
+│   └── T.jsx
+│
+├── lib/               # Utilities
+│   ├── animations.js  # Motion variants & viewport config
+│   └── i18n.js        # Locale map (EN/IT)
+│
+├── context/           # React contexts
+│   └── LangContext.js
+│
+├── hooks/             # Custom hooks
+│   └── index.js       # useI18n, useTheme, useScrollSpy, useReveal
+│
+├── data/              # Static data from content.json
+│   └── index.js
+│
+└── assets/
+    ├── config.json    # Feature flags & section toggles
+    └── content.json   # All copy, data, translations
 ```
 
 ---
 
-## Italiano
+## Getting Started
 
-Sito portfolio personale di Giovanni Romeo, realizzato con Vite + React. Presenta un'interfaccia bilingue (inglese / italiano), supporto al tema scuro/chiaro, animazioni allo scroll e un design moderno.
-
-### Funzionalità
-- UI bilingue: inglese e italiano, selezionabile a runtime
-- Toggle tema scuro / chiaro
-- Animazioni fluide allo scroll (libreria Motion)
-- Sezioni: hero, about, progetti, competenze, contatti
-- Layout completamente responsive
-- Asset video e immagini per un'esperienza visiva ricca
-
-### Stack tecnologico
-- React 19 + Vite 6
-- Motion (animazioni)
-- CSS (custom, senza UI framework)
-- i18n tramite context personalizzato (`LangContext`)
-
-### Come eseguire
 ```bash
-cd portfolio-giovanni-romeo
 npm install
-npm run dev        # server di sviluppo
-npm run build      # build di produzione
-npm run preview    # anteprima della build di produzione
+npm run dev        # http://localhost:5173
+npm run build
+npm run preview
+```
+
+### Mobile testing (Cloudflare Tunnel)
+
+```bash
+# Terminal 1
+npm run dev
+
+# Terminal 2
+cloudflared tunnel run portfolio-dev   # → https://dev.gioromeo.com
 ```
 
 ---
 
-*Author: Giovanni Romeo — v2.6.0*
+## Configuration
+
+Everything lives in `src/assets/`:
+
+- **`config.json`** — enable/disable sections, splash screen, contact form, availability badge, per-section accent colours
+- **`content.json`** — all copy (EN/IT) plus data arrays: projects, skills, experience, marquee, contact links
+
+---
+
+## Features
+
+- Bilingual UI (EN / IT), switchable at runtime
+- Dark / Light theme with animated transition
+- Scroll-triggered animations via Motion `whileInView`
+- Scroll-spy active-section highlight in Navbar
+- Configurable splash screen (video)
+- Cloudflare Tunnel for HTTPS mobile testing at `dev.gioromeo.com`
+
+---
+
+*Giovanni Romeo — v2.6.0*

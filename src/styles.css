@@ -95,7 +95,6 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   scroll-padding-top: calc(var(--nav-h) + var(--card-gap));
 }
 body {
@@ -194,11 +193,12 @@ button {
 
 .section {
   min-height: 100vh;
-  scroll-snap-align: start;
+}
+.section.shell {
+  margin: var(--card-gap) auto;
 }
 .hero {
   min-height: 100vh;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;

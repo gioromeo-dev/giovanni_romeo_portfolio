@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
-import { useI18n, useTheme, useScrollSpy, useReveal } from "./hooks.js";
-import { LangContext } from "./LangContext.js";
+import { useI18n, useTheme, useScrollSpy, useReveal } from "@/hooks";
+import { LangContext } from "@/context/LangContext.js";
 import config from "./assets/config.json";
 
 const { sections, languages, features, splash: splashCfg, sectionAccents } = config;
