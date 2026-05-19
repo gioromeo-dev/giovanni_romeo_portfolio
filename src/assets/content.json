@@ -280,20 +280,20 @@
       {
         "key": "l1",
         "icon": "mail",
-        "val": "gioromeo.mail@icloud.com",
-        "href": "mailto:gioromeo.mail@icloud.com"
+        "val": "mail@gioromeo.com",
+        "href": "mailto:mail@gioromeo.com"
       },
       {
         "key": "l2",
         "icon": "github",
-        "val": "github.com/Giannidmg",
-        "href": "https://github.com/Giannidmg"
+        "val": "github.com/gioromeo-dev",
+        "href": "https://github.com/gioromeo-dev"
       },
       {
         "key": "l3",
         "icon": "linkedin",
         "val": "linkedin.com/in/giovanniromeo",
-        "href": "https://www.linkedin.com/in/giovanni-romeo-43a562246/"
+        "href": "https://www.linkedin.com/in/gioromeo-dev"
       },
       {
         "key": "l4",
@@ -336,9 +336,9 @@
     "about.fact1": "Years building",
     "about.numfact1": "8+",
     "about.fact2": "Shipped projects",
-    "about.numfact2": "40+",
+    "about.numfact2": "20+",
     "about.fact3": "Cups of espresso",
-    "about.numfact3": "2.4k",
+    "about.numfact3": "2.45k",
 
     "skills.title": "Skills",
     "skills.ix": "// 02 — Skills",
@@ -438,9 +438,9 @@
     "about.fact1": "Anni di esperienza",
     "about.numfact1": "8+",
     "about.fact2": "Progetti spediti",
-    "about.numfact2": "40+",
+    "about.numfact2": "20+",
     "about.fact3": "Caffè bevuti",
-    "about.numfact3": "2.4k",
+    "about.numfact3": "2.45k",
 
     "skills.title": "Competenze",
     "skills.ix": "// 02 — Competenze",
