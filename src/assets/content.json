@@ -101,7 +101,7 @@
     "projects": [
       {
         "key": "p1",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/giovanni_romeo_portfolio.png",
         "style": "alt",
         "github": "https://github.com/gioromeo-dev/giovanni_romeo_portfolio",
         "en": {
@@ -117,7 +117,7 @@
       },
       {
         "key": "p2",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/graduation_invitation.png",
         "style": "alt",
         "github": "https://github.com/gioromeo-dev/graduation_invitation",
         "en": {
@@ -133,9 +133,9 @@
       },
       {
         "key": "p3",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/birthday_invitation.png",
         "style": "alt",
-        "github": "https://github.com/gioromeo-dev?tab=repositories",
+        "github": "https://github.com/gioromeo-dev/birthday_invitation",
         "en": {
           "title": "Birthday Invitation",
           "tag": "Web / Apple",
@@ -149,7 +149,7 @@
       },
       {
         "key": "p4",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/alexa_handoff_spotify.png",
         "style": "alt",
         "github": "https://github.com/gioromeo-dev/alexa_handoff_spotify",
         "en": {
@@ -165,7 +165,7 @@
       },
       {
         "key": "p5",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/spo_app.png",
         "style": "alt",
         "github": "https://github.com/gioromeo-dev/spo_app",
         "en": {
@@ -181,7 +181,7 @@
       },
       {
         "key": "p6",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/fanta_sanremo.png",
         "style": "alt",
         "github": "https://github.com/gioromeo-dev/fanta_sanremo",
         "en": {
@@ -197,7 +197,7 @@
       },
       {
         "key": "p7",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/flux_converter.png",
         "style": "alt",
         "github": "https://github.com/gioromeo-dev/flux_converter",
         "en": {
@@ -213,9 +213,9 @@
       },
       {
         "key": "p8",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/car_crash_game.png",
         "style": "alt",
-        "github": "https://github.com/gioromeo-dev?tab=repositories",
+        "github": "https://github.com/gioromeo-dev/car_crash_game",
         "en": {
           "title": "Car Crash Game",
           "tag": "Java / Game",
@@ -245,7 +245,7 @@
       },
       {
         "key": "p10",
-        "image": "/images/projects/portfolio.png",
+        "image": "/images/projects/curse_generator.png",
         "style": "alt",
         "github": "",
         "en": {
@@ -273,6 +273,22 @@
           "title": "Track Parcel Apple",
           "tag": "Apple Pay",
           "desc": "Proof of concept che dimostra l'integrazione del pulsante Apple Wallet tramite Apple Pay JS SDK, con stile personalizzabile e link diretto a un ordine demo."
+        }
+      },
+      {
+        "key": "p12",
+        "image": "/images/projects/telerehabilitation_thesis_project.png",
+        "style": "alt",
+        "github": "https://github.com/gioromeo-dev/telerehabilitation_thesis_project",
+        "en": {
+          "title": "Telerehabilitation Platform",
+          "tag": "PHP / Three.js",
+          "desc": "Thesis project — a web platform for remote rehabilitation sessions combining Cisco Webex video calls with real-time body pose analysis via ml5.js PoseNet, 3D skeleton rendering in Three.js, and motion analytics: joint angles, walk distance and centre-of-gravity estimation."
+        },
+        "it": {
+          "title": "Piattaforma di Teleriabilitazione",
+          "tag": "PHP / Three.js",
+          "desc": "Progetto di tesi — piattaforma web per sessioni di riabilitazione da remoto che combina videochiamate Cisco Webex con analisi della postura in tempo reale via ml5.js PoseNet, rendering 3D dello scheletro con Three.js e analisi del movimento: angoli articolari, distanza percorsa e stima del centro di gravità."
         }
       }
     ],
